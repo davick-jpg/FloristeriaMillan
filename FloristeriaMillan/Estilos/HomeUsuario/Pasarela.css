@@ -1,0 +1,455 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion de la pasarela */
+
+.contenedor-direccion-pasarela {
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 50px;
+}
+
+    .contenedor-direccion-pasarela .titulo {
+        font-size: 2rem;
+        color: var(--color-primario);
+    }
+
+    .contenedor-direccion-pasarela .contenedor-divisor {
+        width: 40%;
+        margin-top: 45px;
+    }
+
+    .contenedor-direccion-pasarela .formulario-direccion {
+        width: 100%;
+        padding: 2%;
+        background: var(--color-fondo-formularios1);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 11px 13px rgba(0, 0, 0, 0.5);
+    }
+
+        .contenedor-direccion-pasarela .formulario-direccion form {
+            width: 100%;
+        }
+
+    .contenedor-direccion-pasarela .divisor {
+        width: 100%;
+        height: 2px;
+        background: var(--color-fondo-formularios1);
+        opacity: .4;
+        display: flex;
+    }
+
+    .contenedor-direccion-pasarela .formulario-direccion .contenedor-botones {
+        margin-top: 20px;
+        width: 80%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+        .contenedor-direccion-pasarela .formulario-direccion .contenedor-botones .boton-aceptar {
+            background: var(--color-secundario);
+            border: 2px solid var(--color-primario);
+            border-radius: 15px;
+            width: 25%;
+            height: 30px;
+            color: var(--color-primario);
+            font-size: 1rem;
+            box-shadow: #000 2px 2px 10px 0px;
+        }
+
+            .contenedor-direccion-pasarela .formulario-direccion .contenedor-botones .boton-aceptar > label {
+                cursor: pointer;
+            }
+
+            .contenedor-direccion-pasarela .formulario-direccion .contenedor-botones .boton-aceptar:hover {
+                transform: translateY(-5px);
+                background: var(--color-primario);
+                border: 2px solid var(--color-secundario);
+                color: var(--color-secundario);
+            }
+
+        .contenedor-direccion-pasarela .formulario-direccion .contenedor-botones .boton-cancelar {
+            background: var(--color-secundario);
+            border: 2px solid var(--color-primario);
+            border-radius: 15px;
+            width: 25%;
+            height: 30px;
+            color: var(--color-primario);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: #000 2px 2px 10px 0px;
+        }
+
+            .contenedor-direccion-pasarela .formulario-direccion .contenedor-botones .boton-cancelar > label {
+                cursor: pointer;
+            }
+
+            .contenedor-direccion-pasarela .formulario-direccion .contenedor-botones .boton-cancelar:hover {
+                transform: translateY(-5px);
+                background: var(--color-primario);
+                border: 2px solid var(--color-secundario);
+                color: var(--color-secundario);
+            }
+
+    .contenedor-direccion-pasarela .contenedor-direccion {
+        display: flex;
+        row-gap: 15px;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .contenedor-direccion-pasarela .formulario-direccion .contenedor-direccion {
+        display: flex;
+        row-gap: 15px;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        max-height: 400px;
+        overflow: scroll;
+        padding: 10px;
+        width: 100%;
+    }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones::-webkit-scrollbar:horizontal {
+            height: 0px;
+        }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones::-webkit-scrollbar:vertical {
+            width: 3px;
+        }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones::-webkit-scrollbar-thumb {
+            background-color: var(--color-primario);
+            border-radius: 2px;
+            border: 2px solid var(--color-primario);
+        }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones::-webkit-scrollbar-track {
+            border-radius: 2px;
+        }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones .tarjeta-direccion {
+            background: transparent;
+            border: transparent;
+            width: 100%;
+            position: relative;
+        }
+
+            .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones .tarjeta-direccion label {
+                width: 100%;
+                position: relative;
+            }
+
+                .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones .tarjeta-direccion label input {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    z-index: 10;
+                }
+
+            .contenedor-direccion-pasarela .contenedor-direccion .agenda-direcciones .tarjeta-direccion .boton-direccion {
+                border: transparent;
+                background: transparent;
+                width: 100%;
+                position: relative;
+            }
+
+    .contenedor-direccion-pasarela .contenedor-direccion .titulo-direccion {
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .contenedor-direccion-pasarela .contenedor-direccion .direccion {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border: 2px solid var(--color-secundario);
+        border-radius: 15px;
+        width: 100%;
+        position: relative;
+        box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.5);
+    }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .direccion .identificador {
+            font-size: 1.5rem;
+            color: var(--color-primario);
+        }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .direccion .descripcion-identificador {
+            font-size: .9rem;
+        }
+
+    .contenedor-direccion-pasarela .contenedor-direccion .eliminar-direccion {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: flex;
+        background: transparent;
+        border: transparent;
+        font-size: 1.2rem;
+        color: var(--color-primario-claro);
+    }
+
+        .contenedor-direccion-pasarela .contenedor-direccion .eliminar-direccion:hover {
+            color: var(--color-primario);
+        }
+
+    .contenedor-direccion-pasarela .contenedor-resumen {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+        .contenedor-direccion-pasarela .contenedor-resumen .titulo-resumen {
+            font-size: 2rem;
+            color: var(--color-primario);
+        }
+
+        .contenedor-direccion-pasarela .contenedor-resumen .divisor {
+        }
+
+        .contenedor-direccion-pasarela .contenedor-resumen .contenedor-subtotal {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+            .contenedor-direccion-pasarela .contenedor-resumen .contenedor-subtotal label {
+            }
+
+        .contenedor-direccion-pasarela .contenedor-resumen .contenedor-envio {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+            .contenedor-direccion-pasarela .contenedor-resumen .contenedor-envio label {
+            }
+
+        .contenedor-direccion-pasarela .contenedor-resumen .contenedor-impuestos {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+            .contenedor-direccion-pasarela .contenedor-resumen .contenedor-impuestos label {
+            }
+
+        .contenedor-direccion-pasarela .contenedor-resumen .divisor {
+            width: 100%;
+            height: 2px;
+            background: var(--color-fondo-formularios1);
+            opacity: .4;
+            display: flex;
+        }
+
+        .contenedor-direccion-pasarela .contenedor-resumen .contenedor-total {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+            .contenedor-direccion-pasarela .contenedor-resumen .contenedor-total label {
+                font-size: 1.5rem;
+            }
+
+    .contenedor-direccion-pasarela .botones-compra button {
+        background: var(--color-secundario);
+        width: 20%;
+        height: 35px;
+        border-radius: 15px;
+        color: var(--color-primario);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--color-primario);
+        box-shadow: #000 1px 1px 10px 0px;
+    }
+
+        .contenedor-direccion-pasarela .botones-compra button:hover {
+            transform: translateY(-5px);
+            background: var(--color-primario);
+            border: 2px solid var(--color-secundario);
+            color: var(--color-secundario);
+        }
+
+    .contenedor-direccion-pasarela .botones-compra form button {
+        background: var(--color-secundario);
+        width: 100%;
+        height: 35px;
+        border-radius: 15px;
+        color: var(--color-primario);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--color-primario);
+        box-shadow: #000 1px 1px 10px 0px;
+    }
+
+        .contenedor-direccion-pasarela .botones-compra form button:hover {
+            transform: translateY(-5px);
+            background: var(--color-primario);
+            border: 2px solid var(--color-secundario);
+            color: var(--color-secundario);
+        }
+
+    .contenedor-direccion-pasarela .botones-compra {
+        margin-bottom: 30px;
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .contenedor-direccion-pasarela .contenedor-control {
+        width: 25%;
+    }
+
+    .contenedor-direccion-pasarela .contenedor-fecha-entrega {
+    }
+
+        .contenedor-direccion-pasarela .contenedor-fecha-entrega .contenedor-fecha {
+            width: 100%;
+            height: 40px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+            .contenedor-direccion-pasarela .contenedor-fecha-entrega .contenedor-fecha input {
+                width: 100%;
+                height: 100%;
+                background: var(--color-primario);
+                border-radius: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+        .contenedor-direccion-pasarela .contenedor-fecha-entrega .contenedor-hora {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            display: none;
+            flex-direction: column;
+        }
+
+            .contenedor-direccion-pasarela .contenedor-fecha-entrega .contenedor-hora .radio-hora {
+                display: flex;
+                position: relative;
+                width: 20%;
+                align-items: center;
+            }
+
+            .contenedor-direccion-pasarela .contenedor-fecha-entrega .contenedor-hora .horas {
+                display: flex;
+                justify-content: space-evenly;
+                margin-top: 15px;
+            }
+
+            .contenedor-direccion-pasarela .contenedor-fecha-entrega .contenedor-hora input {
+                position: absolute;
+                display: none;
+            }
+
+            .contenedor-direccion-pasarela .contenedor-fecha-entrega .contenedor-hora label {
+                background: var(--color-primario);
+                width: 100%;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 10px;
+                border: 2px solid var(--color-secundario);
+            }
+
+input[type="radio"]:checked + label {
+    background: var(--color-secundario) !important;
+    color: var(--color-primario);
+    transform: translateY(-3px);
+    border: 2px solid var(--color-primario);
+}
+
+.mensaje-fallo {
+    width: 100%;
+    height: 100%;
+    min-height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+    .mensaje-fallo label {
+        font-size: 2rem;
+        color: var(--color-primario);
+        width: 50%;
+        text-align: justify;
+    }
+
+    .mensaje-fallo .titulo {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .mensaje-fallo button {
+        border: 2px solid var(--color-primario);
+        background: var(--color-fondo-formularios1);
+        border-radius: 10px;
+        height: 30px;
+        width: 150px;
+        font-size: 1rem;
+        color: var(--color-primario);
+        margin-top: 20px;
+    }
+
+@media (max-width:800px) {
+    .contenedor-direccion-pasarela {
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .contenedor-direccion-pasarela .contenedor-divisor {
+            width: 70%;
+        }
+
+        .contenedor-direccion-pasarela .contenedor-resumen {
+            width: 60%;
+            margin-top: 0px;
+        }
+}

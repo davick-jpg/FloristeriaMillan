@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    @Styles.Render("~/Estilos/HomePrincipal/Index.css")
+    @Styles.Render("~/Estilos/HomePrincipal/Categoria.css")
+    @Styles.Render("~/Estilos/HomePrincipal/Articulo.css")
+    @Styles.Render("~/Estilos/Shared/HeaderPrincipal.css")
+    @Styles.Render("~/Estilos/Shared/FooterPrincipal.css")
+    @Styles.Render("~/Estilos/Shared/Navegacion.css")
+    @Styles.Render("~/Estilos/Shared/Tarjetas.css")
+    @Styles.Render("~/Estilos/Shared/ComboBox.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+
+    <header>
+        <button type="button" class="header-logo" onclick="ir_a('/HomePrincipal/Index')">
+            <img class="navbar-brand" src="~/Imagenes/logo.png" alt="FloristeriaMillan.png" />
+        </button>
+
+        <div class="buscador">
+            <div class="busqueda">
+                <input type="text" name="busqueda" placeholder="Buscar productos..." onkeyup="buscar_producto_sugerencia()" />
+                <i class="divisor"></i>
+                <button type="button" class="boton-buscar">
+                    <span class="material-icons-outlined">
+                        search
+                    </span>
+                </button>
+            </div>
+            <ul class="sugerencias">
+            </ul>
+        </div>
+
+        <div class="menu-usuario">
+            <button type="button" class="boton-desplegar" onclick="desplegar()">
+                <span class="material-icons-outlined" id="icono-despegable">
+                    menu
+                </span>
+            </button>
+            <button type="button" class="boton-contraer" onclick="contraer()">
+                <span class="material-icons-outlined">
+                    close
+                </span>
+            </button>
+            <div class="menu">
+                <div class="titulo-despegable">
+                    @if (HttpContext.Current.Session["Usuario"] != null)
+                    {
+                        <span class="material-icons-outlined">
+                            account_circle
+                        </span>
+                        <label>
+                            Hola, @HttpContext.Current.Session["usuario"]
+                        </label>
+                    }
+                    else
+                    {
+                        <span class="material-icons-outlined">
+                            account_circle
+                        </span>
+                        <label>
+                            Hola, identifícate
+                        </label>
+                    }
+                </div>
+                @if (HttpContext.Current.Session["Usuario"] != null)
+                {
+                    <button type="button" class="boton-menu sesion" onclick="ir_a('/HomeUsuario/Perfil')">
+                        <span class="material-icons-outlined">
+                            person
+                        </span>
+                        <i class="divisor"></i>
+                        <label>
+                            Perfil
+                        </label>
+                    </button>
+
+                    <button type="button" class="boton-menu sesion" onclick="ir_a('/HomeLogin/Logout')">
+                        <span class="material-icons-outlined">
+                            logout
+                        </span>
+                        <i class="divisor"></i>
+                        <label>
+                            Salir
+                        </label>
+                    </button>
+
+                }
+                else
+                {
+                    <button type="button" onclick="ir_a('/HomeLogin/Login')" class="boton-menu sesion">
+                        <span class="material-icons-outlined">
+                            login
+                        </span>
+                        <i class="divisor"></i>
+                        <label>
+                            Ingresar
+                        </label>
+                    </button>
+
+                    <button type="submit" onclick="ir_a('/HomeLogin/Registro')" class="boton-menu sesion">
+                        <span class="material-icons-outlined">
+                            add_circle
+                        </span>
+                        <i class="divisor"></i>
+                        <label>
+                            Registrarme
+                        </label>
+                    </button>
+                }
+                <button type="button" class="boton-menu" onclick="ir_a('/HomeUsuario/Favoritos')">
+                    <span class="material-icons-outlined">
+                        favorite
+                    </span>
+                    <i class="divisor"></i>
+                    <label>
+                        Favoritos
+                    </label>
+                </button>
+                <button type="button" class="boton-menu boton-carrito" onclick="ir_a('/HomeUsuario/Carrito')">
+                    <span class="material-icons-outlined">
+                        shopping_cart
+                    </span>
+                    <i class="divisor"></i>
+                    <label>
+                        Carrito
+                    </label>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="contenedor-navbar-navegacion" id="contenedor-navbar-navegacion">
+        <nav class="navbar-navegacion">
+            <ul class="contenedor-elementos-navbar" id="contenedor-elementos-navbar">
+                <li class="elemento-navbar">
+                    <button type="submit" class="buton-elemento-navbar" onclick="ir_categoria('Ramos')">
+                        <span class="material-icons-outlined">
+                            local_florist
+                        </span>
+                        <label class="titulo-elemento-navbar" type="text" name="categoria">
+                            Ramos
+                        </label>
+                    </button>
+                </li>
+                <i></i>
+                <li class="elemento-navbar">
+                    <button type="submit" class="buton-elemento-navbar" onclick="ir_categoria('Regala vida')">
+                        <span class="ri-cactus-line"></span>
+                        <label class="titulo-elemento-navbar">
+                            Regala vida
+                        </label>
+                    </button>
+                </li>
+                <i></i>
+                <li class="elemento-navbar-active">
+                    <button class="buton-elemento-navbar" onclick="ir_a('/HomePrincipal/Index')">
+                        <span class="ri-home-smile-2-line"></span>
+                    </button>
+                </li>
+                <i></i>
+                <li class="elemento-navbar">
+                    <button type="submit" class="buton-elemento-navbar" onclick="ir_categoria('Arreglos')">
+                        <span class="ri-plant-line"></span>
+                        <label class="titulo-elemento-navbar">
+                            Arreglos
+                        </label>
+                    </button>
+                </li>
+                <i></i>
+                <li class="elemento-navbar">
+                    <button type="submit" class="buton-elemento-navbar" onclick="ir_categoria('Accesorios')">
+                        <span class="ri-leaf-line"></span>
+                        <label class="titulo-elemento-navbar">
+                            Accesorios
+                        </label>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="contenedor-main">
+
+        <main>
+            @RenderBody()
+        </main>
+
+    </div>
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="contenedor-logo">
+                <img src="~/Imagenes/logo.png" alt="" />
+                <label class="direccion">
+                    CASA 5, Av. 5 MZ 28, San Jose la Pila, 52149 Metepec, Méx.
+                </label>
+            </div>
+            <div class="contenedor-copy">
+                <i class="linea-divisora"></i>
+                <div class="contenedor-texto-copy">
+                    <span class="material-icons-outlined">
+                        copyright
+                    </span>
+                    <label class="texto-copy">
+                        Floristeria Millan
+                    </label>
+                </div>
+            </div>
+            <div class="contenedor-linkbar">
+                <nav class="linkbar">
+                    <ul class="contenedor-items">
+                        <li class="item">
+                            <button class="link" type="button" onclick="ir_categoria('Ramos')">
+                                <label>
+                                    Ramos
+                                </label>
+                            </button>
+                        </li>
+                        <i class="lista-divisor"></i>
+                        <li class="item">
+                            <button class="link" type="button" onclick="ir_categoria('regala vida')">
+                                <label>
+                                    Regala vida
+                                </label>
+                            </button>
+                        </li>
+                        <i class="lista-divisor"></i>
+                        <li class="item">
+                            <button class="link" type="button" onclick="ir_a('index')">
+                                <label>
+                                    Inicio
+                                </label>
+                            </button>
+                        </li>
+                        <i class="lista-divisor"></i>
+                        <li class="item">
+                            <button class="link" type="button" onclick="ir_categoria('Arreglos')">
+                                <label>
+                                    Arreglos
+                                </label>
+                            </button>
+                        </li>
+                        <i class="lista-divisor"></i>
+                        <li class="item">
+                            <button class="link" type="button" onclick="ir_categoria('Accesorios')">
+                                <label>
+                                    Accesorios
+                                </label>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="contenedor-redes">
+                <label class="titlo-redes">
+                    Siguenos
+                </label>
+                <div class="contenedor-logos-redes">
+                    <button type="button" class="boton-logo-red" onclick="ir_a('https://www.facebook.com/profile.php?id=100053337534003')">
+                        <span class="ri-facebook-fill"></span>
+                    </button>
+                    <button type="button" class="boton-logo-red" onclick="ir_a('https://www.instagram.com/millanfloristeria/')">
+                        <span class="ri-instagram-line"></span>
+                    </button>
+                    <button type="button" class="boton-logo-red">
+                        <span class="ri-whatsapp-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/HomePrincipal/Buscador.js")
+    @Scripts.Render("~/Scripts/HomePrincipal/Index.js")
+    @Scripts.Render("~/Scripts/HomePrincipal/Categoria.js")
+    @Scripts.Render("~/Scripts/HomePrincipal/Articulo.js")
+    @Scripts.Render("~/Scripts/Shared/HeaderPrincipal.js")
+    @Scripts.Render("~/Scripts/Shared/FooterPrincipal.js")
+    @Scripts.Render("~/Scripts/Shared/Navegacion.js")
+    @Scripts.Render("~/Scripts/Shared/Tarjetas.js")
+    @Scripts.Render("~/Scripts/Shared/ComboBox.js")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

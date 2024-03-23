@@ -1,0 +1,73 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion sucess */
+
+.contenedor-sucess {
+    width: 60%;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    margin-left: 20%;
+    align-items: center;
+    row-gap: 15px;
+    position: relative;
+}
+
+    .contenedor-sucess .contenedor-titulo {
+        font-size: 4rem;
+        color: var(--color-primario);
+        width: 70%;
+        text-align: center;
+    }
+
+    .contenedor-sucess .contenedor-subtitulo {
+        font-size: 3rem;
+        color: var(--color-primario);
+        width: 70%;
+        text-align: center;
+    }
+
+    .contenedor-sucess .contenedor-mensaje {
+        font-size: 1.5rem;
+        color: var(--color-secundario);
+        width: 80%;
+        text-align: justify;
+    }
+
+    .contenedor-sucess .contenedor-redes {
+        display: flex;
+        row-gap: 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+        .contenedor-sucess .contenedor-redes button {
+            background: transparent;
+            border: transparent;
+            color: var(--color-primario);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+    .contenedor-sucess .salir {
+        background: var(--color-secundario);
+        width: 20%;
+        height: 35px;
+        border-radius: 15px;
+        color: var(--color-primario);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--color-primario);
+        box-shadow: #000 1px 1px 10px 0px;
+        position: absolute;
+        right: 10px;
+        bottom: 120px;
+    }

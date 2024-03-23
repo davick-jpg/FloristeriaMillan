@@ -1,0 +1,218 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion tarjetas */
+
+main .contenedor-tarjeta {
+    height: 330px;
+    min-width: 230px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: var(--color-fondo-formularios1);
+    border-radius: 10px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(0,0,0);
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@media(min-width:1101px) {
+    #contenedor-tarjeta-desvanecer {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    #contenedor-tarjeta-central {
+        visibility: visible;
+        position: relative;
+    }
+
+    #contenedor-tarjeta {
+        visibility: visible;
+        position: relative;
+    }
+
+    #contenedor-tarjeta-aparecer {
+        visibility: visible;
+        position: relative;
+    }
+}
+
+@media(max-width:1100px) {
+    #contenedor-tarjeta-desvanecer {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    #contenedor-tarjeta-central {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    #contenedor-tarjeta {
+        visibility: visible;
+        position: relative;
+    }
+
+    #contenedor-tarjeta-aparecer {
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+@keyframes efecto-expandir-tarjeta {
+    0% {
+        width: 230px;
+        height: 330px;
+    }
+
+    100% {
+        width: 630px;
+        height: 330px;
+    }
+}
+
+main .contenedor-tarjeta svg {
+    width: 100%;
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    border-radius: 15px;
+}
+
+main .contenedor-tarjeta img {
+    width: 90%;
+    height: 185px;
+    position: absolute;
+    z-index: 0;
+    border-radius: 15px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+main .contenido-tarjeta {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: var(--color-primario);
+    border-radius: 15px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+    main .contenido-tarjeta .titulo-tarjeta {
+        font-size: 1.1rem;
+        text-align: center;
+        width: 100%;
+        text-shadow: 3px 1px 3px var(--color-secundario);
+    }
+
+    main .contenido-tarjeta .descripcion-tarjeta {
+        font-size: .6rem;
+        visibility: hidden;
+        position: absolute;
+    }
+
+    main .contenido-tarjeta .precio-tarjeta {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        text-align: center;
+        text-shadow: 3px 1px 3px black;
+    }
+
+main .boton-tarjeta {
+    font-size: 1rem;
+    color: var(--color-primario);
+    background: var(--color-secundario);
+    border: 2px solid var(--color-primario);
+    width: 80%;
+    border-radius: 7px;
+    transition: .2s ease;
+    margin-bottom: 8px;
+}
+
+main .contenido-tarjeta button:hover {
+    background: var(--color-fondo-formularios1);
+    transform: translateY(-2px);
+    box-shadow: rgb(0,0,0) 5px 5px 5px 0px;
+}
+
+
+main .boton-navegacion-productos-recomnedados {
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    main .boton-navegacion-productos-recomnedados span {
+        color: var(--color-primario-claro);
+        font-size: 48px;
+    }
+
+    main .boton-navegacion-productos-recomnedados:hover > span {
+        color: var(--color-primario);
+        transform: translateY(-2px);
+        text-shadow: 2px 1px 5px var(--color-secundario);
+    }
+
+main .contenido-tarjeta .descripcion-tarjeta::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+main .contenido-tarjeta .descripcion-tarjeta::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+
+main .contenido-tarjeta .descripcion-tarjeta::-webkit-scrollbar:vertical {
+    width: 3px;
+}
+
+main .contenido-tarjeta .descripcion-tarjeta::-webkit-scrollbar-thumb {
+    background-color: var(--color-primario);
+    border-radius: 2px;
+    border: 2px solid var(--color-primario);
+}
+
+main .contenido-tarjeta .descripcion-tarjeta::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+main .contenedor-favoritos {
+    z-index: 15;
+    position: absolute;
+    right: 10px;
+    top: 16px;
+}
+
+    main .contenedor-favoritos .boton-favoritos {
+        background: transparent;
+        border: transparent;
+        display: none;
+    }
+
+        main .contenedor-favoritos .boton-favoritos span {
+            color: var(--color-primario);
+        }
+
+    main .contenedor-favoritos .boton-unfavoritos {
+        background: transparent;
+        border: transparent;
+    }
+
+        main .contenedor-favoritos .boton-unfavoritos span {
+            color: var(--color-primario);
+        }

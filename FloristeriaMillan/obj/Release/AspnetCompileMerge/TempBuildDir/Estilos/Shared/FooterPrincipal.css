@@ -1,0 +1,208 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+/* configuracion footer */
+
+footer {
+    width: 100%;
+}
+
+    footer .contenedor-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--color-secundario);
+        height: 250px;
+        position: relative;
+        width: 100%;
+    }
+
+    footer .contenedor-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--color-primario);
+        width: 20%;
+        padding: 40px;
+    }
+
+        footer .contenedor-logo img {
+            width: 190px;
+            height: auto;
+        }
+
+        footer .contenedor-logo label {
+            text-align: center;
+            font-size: .7rem;
+        }
+
+    footer .contenedor-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+        margin-left: 40%;
+        margin-bottom: 20px;
+        height: 100%;
+        color: var(--color-primario);
+        justify-content: flex-end;
+        position: absolute;
+    }
+
+        footer .contenedor-copy i {
+            background: var(--color-primario);
+            width: 100%;
+            height: 1px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        footer .contenedor-copy .contenedor-texto-copy {
+            display: flex;
+            align-items: center;
+            opacity: .7;
+        }
+
+            footer .contenedor-copy .contenedor-texto-copy label {
+                margin-left: 5px;
+            }
+
+    footer .contenedor-redes {
+        width: 20%;
+        color: var(--color-primario);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        footer .contenedor-redes label {
+            width: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        footer .contenedor-redes .contenedor-logos-redes {
+            width: 90%;
+            height: 42px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+            footer .contenedor-redes .contenedor-logos-redes button {
+                background: transparent;
+                border: transparent;
+            }
+
+                footer .contenedor-redes .contenedor-logos-redes button:hover > span {
+                    color: var(--color-primario);
+                }
+
+                footer .contenedor-redes .contenedor-logos-redes button span {
+                    color: var(--color-primario-claro);
+                    font-size: 2rem;
+                    cursor: pointer;
+                }
+
+    footer .contenedor-linkbar {
+        position: absolute;
+        width: 60%;
+        margin-left: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        footer .contenedor-linkbar .linkbar {
+            display: flex;
+            align-items: center;
+            width: 60%;
+        }
+
+            footer .contenedor-linkbar .linkbar .contenedor-items {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                align-items: center;
+            }
+
+                footer .contenedor-linkbar .linkbar .contenedor-items i {
+                    height: 30px;
+                    width: 2px;
+                    background: var(--color-primario);
+                    opacity: .5;
+                }
+
+                footer .contenedor-linkbar .linkbar .contenedor-items .item {
+                }
+
+                    footer .contenedor-linkbar .linkbar .contenedor-items .item button {
+                        background: transparent;
+                        border: transparent;
+                    }
+
+                        footer .contenedor-linkbar .linkbar .contenedor-items .item button label {
+                            color: var(--color-primario);
+                            text-decoration: underline;
+                            font-size: 1.05rem;
+                            cursor: pointer;
+                        }
+
+@media (max-width: 1000px) {
+    footer .contenedor-linkbar {
+        display: none;
+    }
+}
+
+@media (max-width:900px) {
+    footer .contenedor-logo {
+        width: 40%;
+    }
+
+        footer .contenedor-logo img {
+            width: 100px;
+        }
+
+        footer .contenedor-logo label {
+            font-size: .6rem;
+        }
+
+    footer .contenedor-copy {
+        width: 30%;
+    }
+
+        footer .contenedor-copy .contenedor-texto-copy span {
+            font-size: .8rem;
+        }
+
+        footer .contenedor-copy .contenedor-texto-copy label {
+            font-size: .8rem;
+        }
+
+    footer .contenedor-redes {
+        width: 30%;
+    }
+
+        footer .contenedor-redes label {
+            margin: 0;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        footer .contenedor-redes .contenedor-logos-redes {
+            flex-direction: column;
+        }
+
+            footer .contenedor-redes .contenedor-logos-redes button span {
+                font-size: 1.5rem;
+            }
+}

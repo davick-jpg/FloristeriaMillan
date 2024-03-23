@@ -1,0 +1,882 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion productos */
+
+.contenedor-productos .sugerencias {
+    display: none;
+    position: absolute;
+    width: 100%;
+    max-height: 120px;
+    overflow: auto;
+    height: fit-content;
+    margin-top: 30px;
+    border-radius: 0px 0px 10px 10px;
+    padding: 3px;
+    background: var(--color-primario);
+    row-gap: 5px;
+    flex-direction: column;
+    z-index: 5;
+}
+
+    .contenedor-productos .sugerencias::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    .contenedor-productos .sugerencias::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    .contenedor-productos .sugerencias::-webkit-scrollbar:horizontal {
+        height: 0px;
+    }
+
+    .contenedor-productos .sugerencias::-webkit-scrollbar:vertical {
+        width: 2px;
+    }
+
+    .contenedor-productos .sugerencias::-webkit-scrollbar-thumb {
+        background-color: var(--color-secundario);
+        border-radius: 2px;
+        border: 2px solid var(--color-secundario);
+    }
+
+    .contenedor-productos .sugerencias::-webkit-scrollbar-track {
+        border-radius: 2px;
+    }
+
+    .contenedor-productos .sugerencias button {
+        width: 100%;
+        height: 30px;
+        background: var(--color-primario);
+        border: transparent;
+    }
+
+        .contenedor-productos .sugerencias button :hover {
+            box-shadow: 2px 2px 4px 3px black;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+
+        .contenedor-productos .sugerencias button span {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+main .contenedor-productos {
+    background: var(--color-fondo-formularios1);
+    border: 2px solid var(--color-secundario);
+    border-radius: 10px;
+    box-shadow: #000 1px 1px 10px 0px;
+    width: 95%;
+    height: 90%;
+    overflow: hidden;
+}
+
+    main .contenedor-productos .contenedor-header {
+        height: 100px;
+        background: var(--color-secundario);
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
+        padding-left: 10px;
+        align-items: center;
+        box-shadow: var(--color-primario) -1px 2px 20px 3px;
+    }
+
+        main .contenedor-productos .contenedor-header label {
+            font-size: 3rem;
+            color: var(--color-primario);
+            margin-left: 50px;
+            text-shadow: 2px 2px 1px var(--color-fondo-formularios1);
+        }
+
+        main .contenedor-productos .contenedor-header button {
+            background: transparent;
+            border: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+            main .contenedor-productos .contenedor-header button:hover > label {
+                color: var(--color-primario);
+                transform: translateY(-3px);
+            }
+
+            main .contenedor-productos .contenedor-header button:hover > span {
+                color: var(--color-primario);
+                transform: translateY(-3px);
+            }
+
+            main .contenedor-productos .contenedor-header button label {
+                font-size: 1rem;
+                text-decoration: underline;
+                cursor: pointer;
+                color: var(--color-primario-claro);
+            }
+
+            main .contenedor-productos .contenedor-header button span {
+                font-size: 1rem;
+                cursor: pointer;
+                color: var(--color-primario-claro);
+            }
+
+    main .contenedor-productos .contenedor-tabla {
+        padding: 10px 5px 10px 5px;
+        max-height: 650px;
+        height: 90%;
+        overflow: scroll;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+        main .contenedor-productos .contenedor-tabla::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        main .contenedor-productos .contenedor-tabla::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        main .contenedor-productos .contenedor-tabla::-webkit-scrollbar:horizontal {
+            height: 0px;
+        }
+
+        main .contenedor-productos .contenedor-tabla::-webkit-scrollbar:vertical {
+            width: 2px;
+        }
+
+        main .contenedor-productos .contenedor-tabla::-webkit-scrollbar-thumb {
+            background-color: var(--color-primario);
+            border-radius: 2px;
+            border: 2px solid var(--color-primario);
+        }
+
+        main .contenedor-productos .contenedor-tabla::-webkit-scrollbar-track {
+            border-radius: 2px;
+        }
+
+        main .contenedor-productos .contenedor-tabla table {
+            border-collapse: separate;
+            border-spacing: 15px;
+            border-radius: 10px 10px;
+            background: linear-gradient(0deg, rgba(45,44,38,1) 0%, rgba(0,0,0,1) 100%);
+            width: 100%;
+            height: 90%;
+            margin-top: 10px;
+        }
+
+            main .contenedor-productos .contenedor-tabla table tr {
+                border-bottom: 2px solid var(--color-secundario);
+                height: 35px;
+            }
+
+            main .contenedor-productos .contenedor-tabla table .encabezados {
+                border: 2px solid var(--color-primario);
+                background: var(--color-secundario);
+                font-size: 1rem;
+                color: var(--color-primario);
+                text-align: center;
+                height: 35px;
+            }
+
+            main .contenedor-productos .contenedor-tabla table tr td {
+                color: antiquewhite;
+                cursor: pointer;
+            }
+
+                main .contenedor-productos .contenedor-tabla table tr td img {
+                    width: 200px;
+                    border-radius: 15px;
+                    aspect-ratio: 1/1;
+                }
+
+                main .contenedor-productos .contenedor-tabla table tr td button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: transparent;
+                    border: transparent;
+                }
+
+                    main .contenedor-productos .contenedor-tabla table tr td button span {
+                        color: var(--color-primario-claro);
+                        cursor: pointer;
+                    }
+
+                    main .contenedor-productos .contenedor-tabla table tr td button:hover span {
+                        transform: translateY(-3px);
+                        color: var(--color-primario);
+                    }
+
+/* configuracion formularios */
+
+.contenedor-productos .vista-parcial {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    width: 80%;
+    height: 95%;
+    overflow: scroll;
+    background: var(--color-fondo-formularios1);
+    padding: 2%;
+    border-radius: 15px;
+    box-shadow: #000 3px 3px 10px 4px;
+    justify-content: space-around;
+}
+
+    .contenedor-productos .vista-parcial::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    .contenedor-productos .vista-parcial::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    .contenedor-productos .vista-parcial::-webkit-scrollbar:horizontal {
+        height: 0px;
+    }
+
+    .contenedor-productos .vista-parcial::-webkit-scrollbar:vertical {
+        width: 2px;
+    }
+
+    .contenedor-productos .vista-parcial::-webkit-scrollbar-thumb {
+        background-color: var(--color-primario);
+        border-radius: 2px;
+        border: 2px solid var(--color-primario);
+    }
+
+    .contenedor-productos .vista-parcial::-webkit-scrollbar-track {
+        border-radius: 2px;
+    }
+
+    .contenedor-productos .vista-parcial .contenedor-componentes {
+        width: 40%;
+        height: 90%;
+        overflow: scroll;
+        display: flex;
+        flex-direction: column;
+        background: var(--color-secundario);
+        padding: 2%;
+        padding-top: 3px;
+        border-radius: 15px;
+        box-shadow: #000 3px 3px 10px 4px;
+        row-gap: 10px;
+    }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes::-webkit-scrollbar:horizontal {
+            height: 0px;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes::-webkit-scrollbar:vertical {
+            width: 2px;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes::-webkit-scrollbar-thumb {
+            background-color: var(--color-primario);
+            border-radius: 2px;
+            border: 2px solid var(--color-primario);
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes::-webkit-scrollbar-track {
+            border-radius: 2px;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes .titulo {
+            font-size: 2rem;
+            color: var(--color-primario);
+            font-style: normal;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente {
+            display: flex;
+            border: 2px solid var(--color-primario);
+            border-radius: 10px;
+            box-shadow: 5px 6px 5px var(--color-fondo-formularios1);
+            position: relative;
+            background: var(--color-fondo-formularios1);
+            padding: 5px;
+        }
+
+            .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .eliminar-imagen {
+                position: absolute;
+                right: 0px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                border: transparent;
+                height: 30px;
+            }
+
+                .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .eliminar-imagen span {
+                    color: var(--color-primario);
+                }
+
+            .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente img {
+                width: 100px;
+                height: 100px;
+                border-radius: 15px;
+                margin: 7px;
+                margin-right: 13px;
+                box-shadow: #000 3px 3px 11px 4px;
+                aspect-ratio: 1/1;
+            }
+
+            .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos {
+                display: flex;
+                flex-direction: column;
+                margin-left: 10px;
+                width: 55%;
+            }
+
+                .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .nombre-articulo {
+                    font-size: 1.1rem;
+                    color: var(--color-primario);
+                    margin-right: 40px;
+                    font-style: normal;
+                    text-shadow: 3px 3px 3px black;
+                }
+
+                .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .precio-articulo {
+                    font-size: 1rem;
+                    color: var(--color-primario);
+                    font-weight: bold;
+                    font-style: normal;
+                }
+
+                .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .spinner-cantidad {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+
+                    .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .spinner-cantidad .cantidad {
+                        font-size: 1rem;
+                        color: var(--color-primario);
+                        font-style: normal;
+                    }
+
+                    .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .spinner-cantidad .contenedor-botones {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 10px;
+                    }
+
+                        .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .spinner-cantidad .contenedor-botones button {
+                            background: transparent;
+                            border: transparent;
+                        }
+
+                            .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .spinner-cantidad .contenedor-botones button span {
+                                color: var(--color-primario);
+                            }
+
+                            .contenedor-productos .vista-parcial .contenedor-componentes .tarjeta-componente .contenedor-datos .spinner-cantidad .contenedor-botones button:hover > span {
+                            }
+
+    .contenedor-productos .vista-parcial .contenedor-divisor {
+        width: 55%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: transparent;
+        border: transparent;
+        row-gap: 19px;
+    }
+
+    .contenedor-productos .vista-parcial .contenedor-articulos {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 5%;
+        padding-top: 0px;
+        flex-direction: column;
+        background: var(--color-secundario);
+        width: 100%;
+        height: 400px;
+    }
+
+        .contenedor-productos .vista-parcial .contenedor-articulos .titulo {
+            font-size: 2rem;
+            color: var(--color-primario);
+            font-style: normal;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-articulos form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-articulos .buscador {
+            width: 60%;
+            height: 30px;
+            display: flex;
+            margin-left: 40%;
+            position: relative;
+        }
+
+            .contenedor-productos .vista-parcial .contenedor-articulos .buscador input {
+                width: 90%;
+                height: 100%;
+                background: var(--color-fondo-formularios1);
+                border: 2px solid var(--color-primario);
+                border-radius: 5px 0px 0px 5px;
+                color: var(--color-primario);
+            }
+
+                .contenedor-productos .vista-parcial .contenedor-articulos .buscador input:focus {
+                    outline: none;
+                }
+
+                .contenedor-productos .vista-parcial .contenedor-articulos .buscador input::placeholder {
+                    color: var(--color-primario);
+                }
+
+            .contenedor-productos .vista-parcial .contenedor-articulos .buscador .boton-buscar {
+                width: 10%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--color-fondo-formularios1);
+                border: 2px solid var(--color-primario);
+                border-left: 0px;
+                border-radius: 0px 5px 5px 0px;
+            }
+
+                .contenedor-productos .vista-parcial .contenedor-articulos .buscador .boton-buscar span {
+                    color: var(--color-primario);
+                }
+
+        .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            background: transparent;
+            border: 2px solid var(--color-primario);
+            border-radius: 15px;
+            position: relative;
+            margin-top: 15px;
+        }
+
+            .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .descripcion-articulo {
+                display: flex;
+                margin-top: 10px;
+                flex-direction: column;
+            }
+
+            .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo img {
+                width: 200px;
+                aspect-ratio: 1/1;
+                margin: 7px;
+                border-radius: 15px;
+                margin-right: 13px;
+                box-shadow: #000 3px 3px 11px 4px;
+            }
+
+            .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .agregar-articulo {
+                position: absolute;
+                bottom: 22px;
+                right: 10px;
+                width: 100px;
+                height: 27px;
+                border-radius: 15px;
+                background: var(--color-fondo-formularios1);
+                border: 2px solid var(--color-primario);
+                color: var(--color-primario);
+                box-shadow: 1px 1px 5px var(--color-primario);
+            }
+
+                .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .agregar-articulo:hover {
+                    background: var(--color-secundario);
+                    border: 2px solid var(--color-primario);
+                    color: var(--color-primario);
+                    box-shadow: 1px 1px 5px var(--color-primario);
+                    transform: translateY(-3px);
+                }
+
+button.agregar-articulo {
+}
+
+.contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .nombre-articulo {
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    font-style: normal;
+}
+
+.contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .precio-articulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    font-style: normal;
+}
+
+.contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .spinner-cantidad {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 5px;
+    right: 110px;
+}
+
+    .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .spinner-cantidad .cantidad {
+        font-size: 1.3rem;
+        color: var(--color-primario);
+        font-style: normal;
+    }
+
+    .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .spinner-cantidad .contenedor-botones {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .spinner-cantidad .contenedor-botones button {
+            background: transparent;
+            border: transparent;
+        }
+
+            .contenedor-productos .vista-parcial .contenedor-articulos .informacion-articulo .spinner-cantidad .contenedor-botones button span {
+                color: var(--color-primario);
+            }
+
+.contenedor-productos .vista-parcial .contenedor-informacion-articulo {
+    display: flex;
+    width: 100%;
+    background: var(--color-secundario);
+    border-radius: 15px;
+    padding: 5%;
+    padding-top: 0px;
+}
+
+.contenedor-productos .vista-parcial .contenedor-informacion-articulo {
+}
+
+    .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm {
+        height: 100%;
+        width: 100%;
+    }
+
+        .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm .titulo {
+            font-size: 2rem;
+            color: var(--color-primario);
+            font-style: normal;
+        }
+
+        .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 620px;
+        }
+
+            .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                position: relative;
+                height: 100%;
+            }
+
+                .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .botones {
+                    position: absolute;
+                    bottom: 10px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                }
+
+                .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox {
+                }
+
+                    .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .boton-personalizado {
+                        width: 100%;
+                        height: 30px;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        margin-top: 5px;
+                        cursor: pointer;
+                        padding-right: 10px;
+                    }
+
+                        .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .boton-personalizado span {
+                            pointer-events: none;
+                            color: var(--color-primario-claro);
+                            font-weight: lighter;
+                            font-size: 1rem;
+                            letter-spacing: 0.05rem;
+                            transition: 0.5s;
+                            position: relative;
+                            cursor: pointer;
+                        }
+
+                    .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .galeria {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 100%;
+                        row-gap: 15px;
+                    }
+
+                    .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .imagenes-secundarias {
+                        display: flex;
+                        justify-content: space-around;
+                        width: 100%;
+                    }
+
+                    .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .principal {
+                        width: 200px !important;
+                        height: 200px !important;
+                        position: relative;
+                    }
+
+                    .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .contenedor-imagen {
+                        width: 100px;
+                        height: 100px;
+                        position: relative;
+                    }
+
+                        .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .contenedor-imagen img {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 5px;
+                        }
+
+                        .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .contenedor-imagen button {
+                            position: absolute;
+                            width: 30px;
+                            height: 30px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: transparent;
+                            border: transparent;
+                            top: 0px;
+                            right: 0px;
+                            padding: 10px;
+                        }
+
+                            .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .contenedor-imagen button span {
+                            }
+
+                            .contenedor-productos .vista-parcial .contenedor-informacion-articulo #boxForm form .contenedor-formularios .inputbox .contenedor-imagen button:hover > span {
+                            }
+
+
+.contenedor-productos form {
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor-productos label#titulo_login {
+    color: var(--color-primario);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    letter-spacing: 0.1rem;
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 20px;
+    text-shadow: rgba(1,1,1) 2px 2px 2px;
+}
+
+.contenedor-productos .inputbox {
+    position: relative;
+    width: 100%;
+    margin-top: 35px;
+}
+
+    .contenedor-productos .inputbox input {
+        position: relative;
+        width: 100%;
+        padding: 8px 5px 5px;
+        background: transparent;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        color: var(--color-fondo-formularios1);
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        transition: 0.5s;
+        z-index: 10;
+        font-weight: 600;
+    }
+
+    .contenedor-productos .inputbox span {
+        position: absolute;
+        left: 0;
+        padding: 5px 0px 5px;
+        pointer-events: none;
+        color: var(--color-primario-claro);
+        font-weight: lighter;
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        transition: 0.5s;
+    }
+
+    .contenedor-productos .inputbox input:valid ~ span,
+    .contenedor-productos .inputbox input:focus ~ span {
+        color: var(--color-primario);
+        font-size: 1rem;
+        transform: translateY(-1.8rem);
+    }
+
+    .contenedor-productos .inputbox i {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--color-primario);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: 0.5s;
+        pointer-events: none;
+    }
+
+    .contenedor-productos .inputbox input:valid ~ i,
+    .contenedor-productos .inputbox input:focus ~ i {
+        height: 41px;
+    }
+
+.contenedor-productos form .links {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+    .contenedor-productos form .links a {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: var(--color-primario-claro);
+        text-decoration: none;
+    }
+
+        .contenedor-productos form .links a:hover {
+            color: var(--color-primario);
+            text-decoration: underline var(--color-primario);
+        }
+
+.contenedor-productos .contenedor-articulos .botones {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px 0px 10px;
+    width: 50%;
+}
+
+.contenedor-productos form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 9px 9px;
+    background: var(--color-secundario-botones);
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    width: auto;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.contenedor-productos form input[type="button"] {
+    border: none;
+    outline: none;
+    padding: 9px 9px;
+    background: var(--color-secundario-botones);
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    width: auto;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.contenedor-productos form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+.contenedor-productos form input[type="submit"]:hover {
+    opacity: 1;
+    background: var(--color-primario-botones);
+    box-shadow: rgba(0,0,0,0.5) 3px 3px 0px 0px;
+    transform: translateY(-3px);
+}
+
+.contenedor-productos form input[type="button"]:hover {
+    opacity: 1;
+    background: var(--color-primario-botones);
+    box-shadow: rgba(0,0,0,0.5) 3px 3px 0px 0px;
+    transform: translateY(-3px);
+}
+
+.contenedor-productos form .combobox .clases {
+    width: 100%;
+    margin-top: 20px;
+    background: transparent;
+    border: transparent;
+    color: var(--color-primario);
+    font-size: 1rem;
+}
+
+.contenedor-productos form .combobox .categorias {
+    width: 100%;
+    margin-top: 20px;
+    background: transparent;
+    border: transparent;
+    color: var(--color-primario);
+    font-size: 1rem;
+}
+
+.contenedor-productos #imagen-articulo {
+    display: none;
+}
+
+.contenedor-productos select.clase {
+}
+
+.contenedor-productos form .combobox .clases option {
+    background: var(--color-secundario);
+}
+
+.contenedor-productos form .combobox .categorias option {
+    background: var(--color-secundario);
+}
+
+.contenedor-productos .datos-producto {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+    .contenedor-productos .datos-producto .combobox {
+        width: 62%;
+    }

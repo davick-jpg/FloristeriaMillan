@@ -1,0 +1,54 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion favoritos */
+
+.contenedor-favorito {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 65px;
+    margin-bottom: 30px;
+    flex-direction: column;
+    min-height: 60vh;
+}
+
+    .contenedor-favorito .titulo-favorito {
+        font-size: 2.5rem;
+        text-shadow: 1px 1px 1px var(--color-fondo-formularios1);
+    }
+
+    .contenedor-favorito .divisor {
+        height: 3px;
+        background: var(--color-primario);
+        width: 70%;
+        margin-bottom: 10px;
+        opacity: .6;
+    }
+
+    .contenedor-favorito .contenedor-productos {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 90%;
+        column-gap: 25px;
+        max-width: 1400px;
+    }
+
+        .contenedor-favorito .contenedor-productos .contenedor-tarjeta .contenedor-favoritos .boton-favoritos {
+            display: flex;
+        }
+
+        .contenedor-favorito .contenedor-productos .contenedor-tarjeta .contenedor-favoritos .boton-unfavoritos {
+            display: none;
+        }
+}

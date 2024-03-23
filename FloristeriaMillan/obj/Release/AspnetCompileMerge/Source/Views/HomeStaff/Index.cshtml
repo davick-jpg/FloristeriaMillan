@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Staff";
+    Layout = "~/Views/Shared/PlantillaStaff/_PlantillaStaff.cshtml";
+}
+
+<div class="menu-staff">
+    <div class="contenedor-titulo-menu">
+        <span class="material-icons-outlined">
+            local_florist
+        </span>
+        <label class="titulo-menu">
+            Dashboard
+        </label>
+    </div>
+    <div class="contenedor-opciones">
+        <div class="contenedor-opcion">
+            <button class="boton-opcion" type="button" onclick="cargarVistaParcial('Usuarios', 0)">
+                <span class="material-icons-outlined">
+                    people
+                </span>
+                <label>
+                    Usuarios
+                </label>
+            </button>
+        </div>
+        <div class="contenedor-opcion">
+            <button class="boton-opcion" type="button" onclick="cargarVistaParcial('Proveedores', 1)">
+                <span class="ri-truck-line"></span>
+                <label>
+                    Proveedores
+                </label>
+            </button>
+        </div>
+        <div class="contenedor-opcion">
+            <button class="boton-opcion" type="button" onclick="cargarVistaParcial('Articulos', 2)">
+                <span class="material-icons-outlined">
+                    filter_vintage
+                </span>
+                <label>
+                    Articulos
+                </label>
+            </button>
+        </div>
+        <div class="contenedor-opcion">
+            <button class="boton-opcion" type="button" onclick="cargarVistaParcial('Productos', 3)">
+                <span class="material-icons-outlined">
+                    filter_vintage
+                </span>
+                <label>
+                    Productos
+                </label>
+            </button>
+        </div>
+        <div class="contenedor-opcion">
+            <button class="boton-opcion" type="button" onclick="cargarVistaParcial('Ventas', 4)">
+                <span class="material-icons-outlined">
+                    sell
+                </span>
+                <label>
+                    Ventas
+                </label>
+            </button>
+        </div>
+        <div class="contenedor-opcion">
+            <button class="boton-opcion" type="button" onclick="cargarVistaParcial('Pedidos', 5)">
+                <span class="material-icons-outlined">
+                    list_alt
+                </span>
+                <label>
+                    Pedidos
+                </label>
+            </button>
+        </div>
+    </div>
+</div>
+<div id="contenedor-opcion">
+</div>
+

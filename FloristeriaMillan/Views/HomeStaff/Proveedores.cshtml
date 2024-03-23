@@ -1,0 +1,97 @@
+﻿<div class="contenedor-proveedores">
+    <div class="contenedor-header">
+        <label>
+            Proveedores
+        </label>
+        <button class="agregar-usuario" type="button" onclick="mostrar_vista_parcial()">
+            <label>
+                agregar proveedor
+            </label>
+            <span class="material-icons-outlined">
+                add
+            </span>
+        </button>
+    </div>
+    <div class="contenedor-tabla">
+        <table>
+            <tr class="encabezados">
+                <th>Empresa</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+            </tr>
+            @if (Session["Proveedores"] != null)
+            {
+                var proveedores = (FloristeriaMillan.Models.Proveedores[])Session["Proveedores"];
+                foreach (var proveedor in proveedores)
+                {
+                    <tr class="usuarios">
+                        <td class="datos" onclick="buscar_proveedor(this)">@proveedor.nombreEmpresaProv</td>
+                        <td class="datos" onclick="buscar_proveedor(this)">@proveedor.direccionEmpresaProv</td>
+                        <td class="datos" onclick="buscar_proveedor(this)">@proveedor.telefonoEmpresaProv</td>
+                        <td>
+                            <button type="button" class="boton-eliminar" onclick="eliminar_proveedor(this)">
+                                <span class="material-icons-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="vista-parcial">
+        <div class="d-flex flex-column" id="boxForm">
+            @using (Html.BeginForm())
+            {
+                <div class="contenedor-formularios">
+                    <div class="formulario-empresa">
+                        <label id="titulo_login">Empresa</label>
+
+                        <div class="inputbox inputbox-empresa">
+                            <input type="text" required name="nombre_empresa">
+                            <span>Empresa</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox inputbox-empresa">
+                            <input type="text" required name="direccion_empresa">
+                            <span>Direccion</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox inputbox-empresa">
+                            <input type="tel" required name="telefono_empresa">
+                            <span>Telefono</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="divisor">
+                        <div class="formulario-contacto">
+                            <label id="titulo_login">Contacto</label>
+
+                            <div class="inputbox inputbox-contacto">
+                                <input type="text" required name="nombre_contacto">
+                                <span>Nombre</span>
+                                <i></i>
+                            </div>
+                            <div class="inputbox inputbox-contacto">
+                                <input type="email" required name="email_contacto">
+                                <span>Email</span>
+                                <i></i>
+                            </div>
+                            <div class="inputbox inputbox-contacto">
+                                <input type="tel" pattern="[0-9]{10}" required name="telefono_contacto">
+                                <span>Telefono</span>
+                                <i></i>
+                            </div>
+                        </div>
+                        <div class="botones">
+                            <input type="button" value="Registrar" onclick="enviar_datos_proveedor()">
+                            <input type="button" value="Cancelar" onclick="cerrarventana_proveedor()" id="cancelar">
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/PlantillaLogin/_PlantillaLogin.cshtml";
+}
+
+<div class="d-flex flex-row justify-content-center align-items-center" id="box">
+
+    <div class="d-flex flex-column" id="boxForm">
+        @using (Html.BeginForm())
+        {
+            <label id="titulo_login">Iniciar Sesion</label>
+
+            <div class="inputbox">
+                <input type="text" required name="email">
+                <span>Usuario</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="password" required name="password">
+                <span>Contraseña</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a>@ViewBag.Error</a>
+                <a href="~/HomeLogin/Registro">Registrarme</a>
+            </div>
+            <input type="submit" value="Iniciar sesion">
+        }
+    </div>
+</div>

@@ -1,0 +1,365 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion usuarios */
+
+main .contenedor-proveedores {
+    background: var(--color-fondo-formularios1);
+    border: 2px solid var(--color-secundario);
+    border-radius: 10px;
+    box-shadow: #000 1px 1px 10px 0px;
+    width: 90%;
+    height: 90%;
+}
+
+    main .contenedor-proveedores .contenedor-header {
+        box-shadow: var(--color-primario) -1px 2px 20px 3px;
+        height: 100px;
+        background: var(--color-secundario);
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
+        padding-left: 10px;
+        align-items: center;
+    }
+
+        main .contenedor-proveedores .contenedor-header label {
+            text-shadow: 2px 2px 1px var(--color-fondo-formularios1);
+            font-size: 3rem;
+            color: var(--color-primario);
+            margin-left: 50px;
+        }
+
+        main .contenedor-proveedores .contenedor-header button {
+            background: transparent;
+            border: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+            main .contenedor-proveedores .contenedor-header button:hover > label {
+                color: var(--color-primario);
+                transform: translateY(-3px);
+            }
+
+            main .contenedor-proveedores .contenedor-header button:hover > span {
+                color: var(--color-primario);
+                transform: translateY(-3px);
+            }
+
+            main .contenedor-proveedores .contenedor-header button label {
+                font-size: 1rem;
+                text-decoration: underline;
+                cursor: pointer;
+                color: var(--color-primario-claro);
+            }
+
+            main .contenedor-proveedores .contenedor-header button span {
+                font-size: 1rem;
+                cursor: pointer;
+                color: var(--color-primario-claro);
+            }
+
+    main .contenedor-proveedores .contenedor-tabla {
+        padding: 10px 5px 10px 5px;
+        width: 100%;
+        max-height: 700px;
+        overflow: scroll;
+    }
+
+        main .contenedor-proveedores .contenedor-tabla::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        main .contenedor-proveedores .contenedor-tabla::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        main .contenedor-proveedores .contenedor-tabla::-webkit-scrollbar:horizontal {
+            height: 0px;
+        }
+
+        main .contenedor-proveedores .contenedor-tabla::-webkit-scrollbar:vertical {
+            width: 2px;
+        }
+
+        main .contenedor-proveedores .contenedor-tabla::-webkit-scrollbar-thumb {
+            background-color: var(--color-primario);
+            border-radius: 2px;
+            border: 2px solid var(--color-primario);
+        }
+
+        main .contenedor-proveedores .contenedor-tabla::-webkit-scrollbar-track {
+            border-radius: 2px;
+        }
+
+        main .contenedor-proveedores .contenedor-tabla table {
+            border-collapse: separate;
+            border-spacing: 15px;
+            border-radius: 10px 10px;
+            background: linear-gradient(0deg, rgba(45,44,38,1) 0%, rgba(0,0,0,1) 100%);
+            width: 100%;
+        }
+
+            main .contenedor-proveedores .contenedor-tabla table tr {
+                border-bottom: 2px solid var(--color-secundario);
+                height: 35px;
+                text-align: center;
+            }
+
+            main .contenedor-proveedores .contenedor-tabla table .encabezados {
+                border: 2px solid var(--color-primario);
+                background: var(--color-secundario);
+                font-size: 1rem;
+                color: var(--color-primario);
+                text-align: center;
+                height: 35px;
+            }
+
+            main .contenedor-proveedores .contenedor-tabla table tr td {
+                color: antiquewhite;
+                cursor: pointer;
+            }
+
+                main .contenedor-proveedores .contenedor-tabla table tr td button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: transparent;
+                    border: transparent;
+                }
+
+                    main .contenedor-proveedores .contenedor-tabla table tr td button span {
+                        color: var(--color-primario-claro);
+                        cursor: pointer;
+                    }
+
+                    main .contenedor-proveedores .contenedor-tabla table tr td button:hover span {
+                        transform: translateY(-3px);
+                        color: var(--color-primario);
+                    }
+
+    /* configuracion formularios */
+
+    main .contenedor-proveedores .vista-parcial {
+        display: none;
+        position: absolute;
+        width: 80%;
+        left: 10%;
+        top: 0;
+        max-width: 850px;
+        height: 60%;
+        max-height: 540px;
+        margin-top: 15%;
+        margin-left: 10%;
+    }
+
+        main .contenedor-proveedores .vista-parcial .contenedor-formularios {
+            display: flex;
+            justify-content: space-evenly;
+            height: 500px;
+            align-items: center;
+        }
+
+            main .contenedor-proveedores .vista-parcial .contenedor-formularios .formulario-empresa {
+            }
+
+            main .contenedor-proveedores .vista-parcial .contenedor-formularios .divisor {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: var(--color-fondo-formularios1);
+                border-radius: 15px;
+            }
+
+                main .contenedor-proveedores .vista-parcial .contenedor-formularios .divisor .formulario-contacto {
+                    padding: 30px;
+                    border-radius: 10px;
+                }
+
+                main .contenedor-proveedores .vista-parcial .contenedor-formularios .divisor .botones {
+                    width: 70%;
+                    margin-bottom: 15px;
+                }
+
+.contenedor-proveedores div#boxForm {
+    box-shadow: 0px 0px 11px 13px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    width: 100%;
+    padding: 5%;
+    padding-top: 0px;
+    background: var(--color-secundario);
+}
+
+.contenedor-proveedores form {
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor-proveedores label#titulo_login {
+    color: var(--color-primario);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    letter-spacing: 0.1rem;
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 20px;
+    text-shadow: rgba(1,1,1) 1px 1px 2px;
+}
+
+.contenedor-proveedores .inputbox {
+    position: relative;
+    width: 100%;
+    margin-top: 35px;
+}
+
+    .contenedor-proveedores .inputbox input {
+        position: relative;
+        width: 100%;
+        padding: 8px 5px 5px;
+        background: transparent;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        color: var(--color-fondo-formularios1);
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        transition: 0.5s;
+        z-index: 10;
+        font-weight: 600;
+    }
+
+    .contenedor-proveedores .inputbox span {
+        position: absolute;
+        left: 0;
+        padding: 5px 0px 5px;
+        pointer-events: none;
+        color: var(--color-primario-claro);
+        font-weight: lighter;
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        transition: 0.5s;
+    }
+
+    .contenedor-proveedores .inputbox input:valid ~ span,
+    .contenedor-proveedores .inputbox input:focus ~ span {
+        color: var(--color-primario);
+        font-size: 1rem;
+        transform: translateY(-1.8rem);
+    }
+
+    .contenedor-proveedores .inputbox i {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--color-primario);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: 0.5s;
+        pointer-events: none;
+    }
+
+    .contenedor-proveedores .inputbox input:valid ~ i,
+    .contenedor-proveedores .inputbox input:focus ~ i {
+        height: 41px;
+    }
+
+.contenedor-proveedores form .links {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+    .contenedor-proveedores form .links a {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: var(--color-primario-claro);
+        text-decoration: none;
+    }
+
+        .contenedor-proveedores form .links a:hover {
+            color: var(--color-primario);
+            text-decoration: underline var(--color-primario);
+        }
+
+.contenedor-proveedores .botones {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+}
+
+.contenedor-proveedores form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 9px 9px;
+    background: var(--color-secundario-botones);
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    width: auto;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.contenedor-proveedores form input[type="button"] {
+    border: none;
+    outline: none;
+    padding: 9px 9px;
+    background: var(--color-secundario-botones);
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    width: auto;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.contenedor-proveedores form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+.contenedor-proveedores form input[type="submit"]:hover {
+    opacity: 1;
+    background: var(--color-primario-botones);
+    box-shadow: rgba(0,0,0,0.5) 3px 3px 0px 0px;
+    transform: translateY(-3px);
+}
+
+.contenedor-proveedores form input[type="button"]:hover {
+    opacity: 1;
+    background: var(--color-primario-botones);
+    box-shadow: rgba(0,0,0,0.5) 3px 3px 0px 0px;
+    transform: translateY(-3px);
+}
+
+.contenedor-proveedores form .combobox {
+}
+
+    .contenedor-proveedores form .combobox .clase {
+        width: 45%;
+        margin-left: 55%;
+        margin-top: 20px;
+        background: transparent;
+        border: transparent;
+        color: var(--color-primario);
+        font-size: 1rem;
+    }
+
+.contenedor-proveedores select.clase {
+}
+
+.contenedor-proveedores form .combobox .clase option {
+    background: var(--color-secundario);
+}

@@ -1,0 +1,390 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/PlantillaPrincipal/_PlantillaPrincipal.cshtml";
+}
+
+<div class="banner-fijo-index">
+    @if (Session["Producto_estrella"] != null)
+    {
+        FloristeriaMillan.Models.Producto producto = (FloristeriaMillan.Models.Producto)Session["Producto_estrella"];
+
+        <img src=@producto.fotoPro alt="Floristeria Millan" />
+        <div class="contenido-banner-fijo-index">
+            <label class="titulo-banner-fijo-index">
+                @producto.nombrePro
+            </label>
+            <label class="subtitulo-banner-fijo-index">
+                @producto.descripcionPro
+            </label>
+            <button type="button" class="boton-banner-fijo-index" onclick="ir_articulo('@producto.nombrePro')">
+                Comprar
+            </button>
+        </div>
+    }
+</div>
+<div class="contenedor-servicios">
+    <div class="item-servicio">
+        <span class="material-icons-outlined">
+            verified_user
+        </span>
+        <div class="contenedor-titulo-item-servicio">
+            <label class="titulo-item-servicio">
+                Compras protegidas
+            </label>
+            <label class="subtitulo-item-servicio">
+                Garantizamos la calidad y frescura de cada una de nuestras flores.
+            </label>
+        </div>
+    </div>
+    <div class="item-servicio">
+        <span class="material-icons-outlined">
+            local_shipping
+        </span>
+        <div class="contenedor-titulo-item-servicio">
+            <label class="titulo-item-servicio">
+                Envios programados
+            </label>
+            <label class="subtitulo-item-servicio">
+                Programa el envío de tus flores para fechas especiales y sorprende a tus seres queridos.
+            </label>
+        </div>
+    </div>
+    <div class="item-servicio">
+        <span class="material-icons-outlined">
+            local_florist
+        </span>
+        <div class="contenedor-titulo-item-servicio">
+            <label class="titulo-item-servicio">
+                Productores locales
+            </label>
+            <label class="subtitulo-item-servicio">
+                Apoyamos a los productores locales, promoviendo la sostenibilidad y el comercio justo.
+            </label>
+        </div>
+    </div>
+    <div class="item-servicio">
+        <span class="material-icons-outlined">
+            diamond
+        </span>
+        <div class="contenedor-titulo-item-servicio">
+            <label class="titulo-item-servicio">
+                Calidad asegurada
+            </label>
+            <label class="subtitulo-item-servicio">
+                Nuestras flores pasan por estrictos controles de calidad para garantizar la excelencia en cada pedido.
+            </label>
+        </div>
+    </div>
+</div>
+<i class="divisor"></i>
+<div class="contenedor-productos-recomendados">
+    <div class="contenedor-titulos-productos-recomendados">
+        <label class="titulo-productos-recomendados">
+            Ideas para regalar
+        </label>
+        <label class="subtitulo-productos-recomendados">
+            Encuentra inspiración en nuestra colección de artículos recomendados. Estos productos son perfectos para regalar en ocasiones especiales como cumpleaños, aniversarios, o simplemente para expresar tus sentimientos.
+        </label>
+    </div>
+    <div class="contenedor-carrusel-productos-recomendados">
+        <div class="carrusel-productos-recomendados" id="carrusel-productos-recomendados">
+            <button type="button" class="boton-navegacion-productos-recomnedados" onclick="retroceder_tarjeta()" id="boton-retroceder-productos-recomendados">
+                <span class="material-icons-outlined">
+                    arrow_back_ios
+                </span>
+            </button>
+            @if (Session["Productos_recomendados"] != null)
+            {
+                FloristeriaMillan.Models.Producto[] productos = (FloristeriaMillan.Models.Producto[])Session["Productos_recomendados"];
+                for (int i = 0; i < productos.Length; i++)
+                {
+                    <div class="contenedor-tarjeta">
+                        <div class="contenedor-favoritos">
+                            @if (Session["Favoritos"] != null && ((FloristeriaMillan.Models.Producto[])Session["Favoritos"]).Length > 0)
+                            {
+                                FloristeriaMillan.Models.Producto[] favoritos = (FloristeriaMillan.Models.Producto[])Session["Favoritos"];
+
+                                var bandera = false;
+
+                                for (int j = 0; j < favoritos.Length; j++)
+                                {
+                                    if (favoritos[j].nombrePro == productos[i].nombrePro)
+                                    {
+                                        bandera = true;
+                                        j = favoritos.Length;
+                                    }
+                                    else
+                                    {
+                                        bandera = false;
+                                    }
+                                }
+
+                                if (bandera)
+                                {
+
+                                    <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:flex">
+                                        <span class="material-icons-outlined">
+                                            favorite
+                                        </span>
+                                    </button>
+
+                                    <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:none">
+                                        <span class="material-icons-outlined">
+                                            favorite_border
+                                        </span>
+                                    </button>
+
+                                }
+                                else
+                                {
+                                    <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:none">
+                                        <span class="material-icons-outlined">
+                                            favorite
+                                        </span>
+                                    </button>
+
+                                    <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:flex">
+                                        <span class="material-icons-outlined">
+                                            favorite_border
+                                        </span>
+                                    </button>
+
+                                }
+                            }
+                            else
+                            {
+                                <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:none">
+                                    <span class="material-icons-outlined">
+                                        favorite
+                                    </span>
+                                </button>
+
+                                <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:flex">
+                                    <span class="material-icons-outlined">
+                                        favorite_border
+                                    </span>
+                                </button>
+                            }
+                        </div>
+                        <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 1)" offset="0%"></stop><stop stop-color="rgba(45, 44, 38, 0.69)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,49L120,57.2C240,65,480,82,720,138.8C960,196,1200,294,1440,343C1680,392,1920,392,2160,359.3C2400,327,2640,261,2880,212.3C3120,163,3360,131,3600,122.5C3840,114,4080,131,4320,138.8C4560,147,4800,147,5040,196C5280,245,5520,343,5760,351.2C6000,359,6240,278,6480,204.2C6720,131,6960,65,7200,57.2C7440,49,7680,98,7920,147C8160,196,8400,245,8640,269.5C8880,294,9120,294,9360,253.2C9600,212,9840,131,10080,89.8C10320,49,10560,49,10800,114.3C11040,180,11280,310,11520,334.8C11760,359,12000,278,12240,228.7C12480,180,12720,163,12960,130.7C13200,98,13440,49,13680,73.5C13920,98,14160,196,14400,220.5C14640,245,14880,196,15120,155.2C15360,114,15600,82,15840,73.5C16080,65,16320,82,16560,98C16800,114,17040,131,17160,138.8L17280,147L17280,490L17160,490C17040,490,16800,490,16560,490C16320,490,16080,490,15840,490C15600,490,15360,490,15120,490C14880,490,14640,490,14400,490C14160,490,13920,490,13680,490C13440,490,13200,490,12960,490C12720,490,12480,490,12240,490C12000,490,11760,490,11520,490C11280,490,11040,490,10800,490C10560,490,10320,490,10080,490C9840,490,9600,490,9360,490C9120,490,8880,490,8640,490C8400,490,8160,490,7920,490C7680,490,7440,490,7200,490C6960,490,6720,490,6480,490C6240,490,6000,490,5760,490C5520,490,5280,490,5040,490C4800,490,4560,490,4320,490C4080,490,3840,490,3600,490C3360,490,3120,490,2880,490C2640,490,2400,490,2160,490C1920,490,1680,490,1440,490C1200,490,960,490,720,490C480,490,240,490,120,490L0,490Z"></path></svg>
+                        <img src=@productos[i].fotoPro alt="" class="imagen-tarjeta" />
+                        <div class="contenido-tarjeta">
+                            <label class="titulo-tarjeta">
+                                @productos[i].nombrePro
+                            </label>
+                            <label class="descripcion-tarjeta">
+                                @productos[i].descripcionPro
+                            </label>
+                            <label class="precio-tarjeta">
+                                $@productos[i].precioPro
+                            </label>
+                            <Button type="button" class="boton-tarjeta" onclick="ir_articulo('@productos[i].nombrePro')">
+                                comprar
+                            </Button>
+                        </div>
+                    </div>
+                }
+            }
+            <button type="button" class="boton-navegacion-productos-recomnedados" onclick="avanzar_tarjeta()" id="boton-avanzar-productos-recomendados">
+                <span class="material-icons-outlined">
+                    arrow_forward_ios
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<i class="divisor"></i>
+<div class="contenedor-banner-promociones">
+    <div class="carrusel-banner-promociones" id="carrusel-banner-promociones">
+        <button type="button" class="boton-navegacion-productos-recomnedados" onclick="retroceder_banner()" id="boton-retroceder-banner-promociones">
+            <span class="material-icons-outlined">
+                arrow_back_ios
+            </span>
+        </button>
+        @if (Session["Banners"] != null)
+        {
+            String[] direcciones = (String[])Session["Banners"];
+            foreach (String direccion in direcciones)
+            {
+                <div class="contenedor_promocion">
+                    <img src=@direccion.ToString() alt="Alternate Text" loop="false" autoplay />
+                </div>
+            }
+        }
+        <button type="button" class="boton-navegacion-productos-recomnedados" onclick="avanzar_banner()" id="boton-avanzar-banner-promociones">
+            <span class="material-icons-outlined">
+                arrow_forward_ios
+            </span>
+        </button>
+    </div>
+</div>
+<i class="divisor"></i>
+<div class="contenedor-productos-novedad">
+    <div class="contenedor-titulos-productos-novedad">
+        <label class="titulo-productos-novedad">
+            Sorprende con lo nuevo
+        </label>
+        <label class="subtitulo-productos-novedad">
+            Descubre los productos más innovadores y sorprendentes que hemos agregado a nuestra tienda. Nuestro equipo de expertos se esfuerza por presentarte constantemente nuevas opciones que capturarán la atención y admiración de tus seres queridos.
+        </label>
+    </div>
+    <div class="contenedor-carrusel-productos-novedad">
+        <div class="carrusel-productos-novedad" id="carrusel-productos-novedad">
+            <button type="button" class="boton-navegacion-productos-recomnedados" onclick="retroceder_tarjeta_novedad()" id="boton-retroceder-productos-novedad">
+                <span class="material-icons-outlined">
+                    arrow_back_ios
+                </span>
+            </button>
+            @if (Session["Productos_Novedad"] != null)
+            {
+                FloristeriaMillan.Models.Producto[] productos = (FloristeriaMillan.Models.Producto[])Session["Productos_recomendados"];
+                for (int i = 0; i < productos.Length; i++)
+                {
+                    <div class="contenedor-tarjeta">
+                        <div class="contenedor-favoritos">
+                            @if (Session["Favoritos"] != null && ((FloristeriaMillan.Models.Producto[])Session["Favoritos"]).Length > 0)
+                            {
+                                FloristeriaMillan.Models.Producto[] favoritos = (FloristeriaMillan.Models.Producto[])Session["Favoritos"];
+
+                                var bandera = false;
+
+                                for (int j = 0; j < favoritos.Length; j++)
+                                {
+                                    if (favoritos[j].nombrePro == productos[i].nombrePro)
+                                    {
+                                        bandera = true;
+                                        j = favoritos.Length;
+                                    }
+                                    else
+                                    {
+                                        bandera = false;
+                                    }
+                                }
+
+                                if (bandera)
+                                {
+
+                                    <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:flex">
+                                        <span class="material-icons-outlined">
+                                            favorite
+                                        </span>
+                                    </button>
+
+                                    <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:none">
+                                        <span class="material-icons-outlined">
+                                            favorite_border
+                                        </span>
+                                    </button>
+
+                                }
+                                else
+                                {
+                                    <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:none">
+                                        <span class="material-icons-outlined">
+                                            favorite
+                                        </span>
+                                    </button>
+
+                                    <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:flex">
+                                        <span class="material-icons-outlined">
+                                            favorite_border
+                                        </span>
+                                    </button>
+
+                                }
+                            }
+                            else
+                            {
+                                <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:none">
+                                    <span class="material-icons-outlined">
+                                        favorite
+                                    </span>
+                                </button>
+
+                                <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:flex">
+                                    <span class="material-icons-outlined">
+                                        favorite_border
+                                    </span>
+                                </button>
+                            }
+
+                        </div>
+                        <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 1)" offset="0%"></stop><stop stop-color="rgba(45, 44, 38, 0.69)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,49L120,57.2C240,65,480,82,720,138.8C960,196,1200,294,1440,343C1680,392,1920,392,2160,359.3C2400,327,2640,261,2880,212.3C3120,163,3360,131,3600,122.5C3840,114,4080,131,4320,138.8C4560,147,4800,147,5040,196C5280,245,5520,343,5760,351.2C6000,359,6240,278,6480,204.2C6720,131,6960,65,7200,57.2C7440,49,7680,98,7920,147C8160,196,8400,245,8640,269.5C8880,294,9120,294,9360,253.2C9600,212,9840,131,10080,89.8C10320,49,10560,49,10800,114.3C11040,180,11280,310,11520,334.8C11760,359,12000,278,12240,228.7C12480,180,12720,163,12960,130.7C13200,98,13440,49,13680,73.5C13920,98,14160,196,14400,220.5C14640,245,14880,196,15120,155.2C15360,114,15600,82,15840,73.5C16080,65,16320,82,16560,98C16800,114,17040,131,17160,138.8L17280,147L17280,490L17160,490C17040,490,16800,490,16560,490C16320,490,16080,490,15840,490C15600,490,15360,490,15120,490C14880,490,14640,490,14400,490C14160,490,13920,490,13680,490C13440,490,13200,490,12960,490C12720,490,12480,490,12240,490C12000,490,11760,490,11520,490C11280,490,11040,490,10800,490C10560,490,10320,490,10080,490C9840,490,9600,490,9360,490C9120,490,8880,490,8640,490C8400,490,8160,490,7920,490C7680,490,7440,490,7200,490C6960,490,6720,490,6480,490C6240,490,6000,490,5760,490C5520,490,5280,490,5040,490C4800,490,4560,490,4320,490C4080,490,3840,490,3600,490C3360,490,3120,490,2880,490C2640,490,2400,490,2160,490C1920,490,1680,490,1440,490C1200,490,960,490,720,490C480,490,240,490,120,490L0,490Z"></path></svg>
+                        <img src=@productos[i].fotoPro alt="" class="imagen-tarjeta" />
+                        <div class="contenido-tarjeta">
+                            <label class="titulo-tarjeta">
+                                @productos[i].nombrePro
+                            </label>
+                            <label class="descripcion-tarjeta">
+                                @productos[i].descripcionPro
+                            </label>
+                            <label class="precio-tarjeta">
+                                $@productos[i].precioPro
+                            </label>
+                            <Button type="button" class="boton-tarjeta" onclick="ir_articulo('@productos[i].nombrePro')">
+                                comprar
+                            </Button>
+                        </div>
+                    </div>
+                }
+            }
+            <button type="button" class="boton-navegacion-productos-recomnedados" onclick="avanzar_tarjeta_novedad()" id="boton-avanzar-productos-novedad">
+                <span class="material-icons-outlined">
+                    arrow_forward_ios
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<i class="divisor"></i>
+<div class="contenedor-navegacion">
+    <div class="contenedor-categoria">
+        <img src="~/Imagenes/HomePrincipal/Index/logo_ramos.png" />
+        <label class="categoria" id="categoria1">
+            Impresionantes arreglos florales para momentos especiales. Celebra con elegantes composiciones que transmiten emociones y alegran corazones con la frescura y belleza de las flores.
+        </label>
+        <button class="buton-categoria" onclick="ir_categoria('ramos')">
+            <label>
+                Ramos
+            </label>
+        </button>
+        <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(190, 162, 103, 1)" offset="0%"></stop><stop stop-color="rgba(190, 162, 103, 0.87)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,343L60,302.2C120,261,240,180,360,171.5C480,163,600,229,720,236.8C840,245,960,196,1080,147C1200,98,1320,49,1440,49C1560,49,1680,98,1800,114.3C1920,131,2040,114,2160,163.3C2280,212,2400,327,2520,326.7C2640,327,2760,212,2880,138.8C3000,65,3120,33,3240,32.7C3360,33,3480,65,3600,81.7C3720,98,3840,98,3960,138.8C4080,180,4200,261,4320,269.5C4440,278,4560,212,4680,171.5C4800,131,4920,114,5040,130.7C5160,147,5280,196,5400,196C5520,196,5640,147,5760,179.7C5880,212,6000,327,6120,343C6240,359,6360,278,6480,253.2C6600,229,6720,261,6840,228.7C6960,196,7080,98,7200,122.5C7320,147,7440,294,7560,302.2C7680,310,7800,180,7920,147C8040,114,8160,180,8280,212.3C8400,245,8520,245,8580,245L8640,245L8640,490L8580,490C8520,490,8400,490,8280,490C8160,490,8040,490,7920,490C7800,490,7680,490,7560,490C7440,490,7320,490,7200,490C7080,490,6960,490,6840,490C6720,490,6600,490,6480,490C6360,490,6240,490,6120,490C6000,490,5880,490,5760,490C5640,490,5520,490,5400,490C5280,490,5160,490,5040,490C4920,490,4800,490,4680,490C4560,490,4440,490,4320,490C4200,490,4080,490,3960,490C3840,490,3720,490,3600,490C3480,490,3360,490,3240,490C3120,490,3000,490,2880,490C2760,490,2640,490,2520,490C2400,490,2280,490,2160,490C2040,490,1920,490,1800,490C1680,490,1560,490,1440,490C1320,490,1200,490,1080,490C960,490,840,490,720,490C600,490,480,490,360,490C240,490,120,490,60,490L0,490Z"></path></svg>
+    </div>
+    <div class="contenedor-categoria">
+        <img src="~/Imagenes/HomePrincipal/Index/logo_regala_vida.png" />
+        <label class="categoria" id="categoria2">
+            Decora tus espacios con nuestras composiciones florales y plantas vivas. Agrega naturaleza y encanto a tu hogar u oficina con nuestras opciones versátiles y de calidad.
+        </label>
+        <button class="buton-categoria" onclick="ir_categoria('regalavida')">
+            <label>
+                Regala vida
+            </label>
+        </button>
+        <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 250" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 1)" offset="0%"></stop><stop stop-color="rgba(0, 0, 0, 0.48)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,25L34.3,37.5C68.6,50,137,75,206,104.2C274.3,133,343,167,411,179.2C480,192,549,183,617,170.8C685.7,158,754,142,823,116.7C891.4,92,960,58,1029,41.7C1097.1,25,1166,25,1234,33.3C1302.9,42,1371,58,1440,75C1508.6,92,1577,108,1646,133.3C1714.3,158,1783,192,1851,183.3C1920,175,1989,125,2057,125C2125.7,125,2194,175,2263,166.7C2331.4,158,2400,92,2469,70.8C2537.1,50,2606,75,2674,70.8C2742.9,67,2811,33,2880,37.5C2948.6,42,3017,83,3086,100C3154.3,117,3223,108,3291,87.5C3360,67,3429,33,3497,41.7C3565.7,50,3634,100,3703,104.2C3771.4,108,3840,67,3909,45.8C3977.1,25,4046,25,4114,45.8C4182.9,67,4251,108,4320,129.2C4388.6,150,4457,150,4526,145.8C4594.3,142,4663,133,4731,133.3C4800,133,4869,142,4903,145.8L4937.1,150L4937.1,250L4902.9,250C4868.6,250,4800,250,4731,250C4662.9,250,4594,250,4526,250C4457.1,250,4389,250,4320,250C4251.4,250,4183,250,4114,250C4045.7,250,3977,250,3909,250C3840,250,3771,250,3703,250C3634.3,250,3566,250,3497,250C3428.6,250,3360,250,3291,250C3222.9,250,3154,250,3086,250C3017.1,250,2949,250,2880,250C2811.4,250,2743,250,2674,250C2605.7,250,2537,250,2469,250C2400,250,2331,250,2263,250C2194.3,250,2126,250,2057,250C1988.6,250,1920,250,1851,250C1782.9,250,1714,250,1646,250C1577.1,250,1509,250,1440,250C1371.4,250,1303,250,1234,250C1165.7,250,1097,250,1029,250C960,250,891,250,823,250C754.3,250,686,250,617,250C548.6,250,480,250,411,250C342.9,250,274,250,206,250C137.1,250,69,250,34,250L0,250Z"></path></svg>
+    </div>
+    <div class="contenedor-categoria">
+        <img src="~/Imagenes/HomePrincipal/Index/logo_arreglos.png" />
+        <label class="categoria" id="categoria2">
+            Sorprende a tus seres queridos con plantas vivas como cactáceas y suculentas. Regala vida y alegría con estos presentes únicos y duraderos que traerán frescura y color a cualquier lugar.
+        </label>
+        <button class="buton-categoria" onclick="ir_categoria('arreglos')">
+            <label>
+                Arreglos
+            </label>
+        </button>
+        <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 240" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 1)" offset="0%"></stop><stop stop-color="rgba(0, 0, 0, 0.48)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,24L80,36C160,48,320,72,480,104C640,136,800,176,960,176C1120,176,1280,136,1440,112C1600,88,1760,80,1920,68C2080,56,2240,40,2400,52C2560,64,2720,104,2880,136C3040,168,3200,192,3360,192C3520,192,3680,168,3840,164C4000,160,4160,176,4320,164C4480,152,4640,112,4800,92C4960,72,5120,72,5280,92C5440,112,5600,152,5760,156C5920,160,6080,128,6240,104C6400,80,6560,64,6720,76C6880,88,7040,128,7200,144C7360,160,7520,152,7680,128C7840,104,8000,64,8160,52C8320,40,8480,56,8640,68C8800,80,8960,88,9120,100C9280,112,9440,128,9600,148C9760,168,9920,192,10080,196C10240,200,10400,184,10560,148C10720,112,10880,56,11040,32C11200,8,11360,16,11440,20L11520,24L11520,240L11440,240C11360,240,11200,240,11040,240C10880,240,10720,240,10560,240C10400,240,10240,240,10080,240C9920,240,9760,240,9600,240C9440,240,9280,240,9120,240C8960,240,8800,240,8640,240C8480,240,8320,240,8160,240C8000,240,7840,240,7680,240C7520,240,7360,240,7200,240C7040,240,6880,240,6720,240C6560,240,6400,240,6240,240C6080,240,5920,240,5760,240C5600,240,5440,240,5280,240C5120,240,4960,240,4800,240C4640,240,4480,240,4320,240C4160,240,4000,240,3840,240C3680,240,3520,240,3360,240C3200,240,3040,240,2880,240C2720,240,2560,240,2400,240C2240,240,2080,240,1920,240C1760,240,1600,240,1440,240C1280,240,1120,240,960,240C800,240,640,240,480,240C320,240,160,240,80,240L0,240Z"></path></svg>
+    </div>
+    <div class="contenedor-categoria">
+        <img src="~/Imagenes/HomePrincipal/Index/logo_accesorios.png" />
+        <label class="categoria" id="categoria1">
+            Encuentra macetas, herramientas y decoraciones para complementar tus plantas. Añade estilo y funcionalidad a tu pasión por la jardinería con nuestra selección de accesorios de calidad.
+        </label>
+        <button class="buton-categoria" onclick="ir_categoria('accesorios')">
+            <label>
+                Accesorios
+            </label>
+        </button>
+        <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 470" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(190, 162, 103, 1)" offset="0%"></stop><stop stop-color="rgba(190, 162, 103, 0.87)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,47L80,101.8C160,157,320,266,480,266.3C640,266,800,157,960,133.2C1120,110,1280,172,1440,219.3C1600,266,1760,298,1920,329C2080,360,2240,392,2400,352.5C2560,313,2720,204,2880,148.8C3040,94,3200,94,3360,141C3520,188,3680,282,3840,321.2C4000,360,4160,345,4320,329C4480,313,4640,298,4800,289.8C4960,282,5120,282,5280,305.5C5440,329,5600,376,5760,352.5C5920,329,6080,235,6240,235C6400,235,6560,329,6720,360.3C6880,392,7040,360,7200,329C7360,298,7520,266,7680,219.3C7840,172,8000,110,8160,109.7C8320,110,8480,172,8640,180.2C8800,188,8960,141,9120,101.8C9280,63,9440,31,9600,62.7C9760,94,9920,188,10080,203.7C10240,219,10400,157,10560,109.7C10720,63,10880,31,11040,23.5C11200,16,11360,31,11440,39.2L11520,47L11520,470L11440,470C11360,470,11200,470,11040,470C10880,470,10720,470,10560,470C10400,470,10240,470,10080,470C9920,470,9760,470,9600,470C9440,470,9280,470,9120,470C8960,470,8800,470,8640,470C8480,470,8320,470,8160,470C8000,470,7840,470,7680,470C7520,470,7360,470,7200,470C7040,470,6880,470,6720,470C6560,470,6400,470,6240,470C6080,470,5920,470,5760,470C5600,470,5440,470,5280,470C5120,470,4960,470,4800,470C4640,470,4480,470,4320,470C4160,470,4000,470,3840,470C3680,470,3520,470,3360,470C3200,470,3040,470,2880,470C2720,470,2560,470,2400,470C2240,470,2080,470,1920,470C1760,470,1600,470,1440,470C1280,470,1120,470,960,470C800,470,640,470,480,470C320,470,160,470,80,470L0,470Z"></path></svg>
+    </div>
+</div>

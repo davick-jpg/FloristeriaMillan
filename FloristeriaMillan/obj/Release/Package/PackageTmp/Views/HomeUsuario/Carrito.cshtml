@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Carrito";
+    Layout = "~/Views/Shared/PlantillaUsuario/_PlantillaUsuario.cshtml";
+}
+
+<div class="contenedor-carrito">
+    @if (Session["Carrito"] != null && ((FloristeriaMillan.Querys.Logica_CanalUsuarios.CarritoProducto[])Session["Carrito"]).Length > 0)
+    {
+        <div class="contenedor-carrito-compra">
+            <label class="titulo-carrito">
+                Carrito de compra
+            </label>
+            <i class="divisor"></i>
+            <div class="carrito-compra">
+                <div class="contenedor-articulos">
+                    @if (Session["Carrito"] != null)
+                    {
+                        FloristeriaMillan.Querys.Logica_CanalUsuarios.CarritoProducto[] productos = (FloristeriaMillan.Querys.Logica_CanalUsuarios.CarritoProducto[])Session["Carrito"];
+                        for (int i = 0; i < productos.Length; i++)
+                        {
+                            decimal precio = (decimal)@productos[i].producto.precioPro;
+                            decimal cantidad = (decimal)@productos[i].carrito.cantidadCar;
+                            precio = precio * cantidad;
+                            <div class="tarjeta-articulo">
+                                <img src=@productos[i].producto.fotoPro alt="" />
+                                <div class="contenedor-articulo">
+                                    <div class="contenedor-informacion">
+                                        <label class="titulo-articulo">
+                                            @productos[i].producto.nombrePro
+                                        </label>
+                                        <pre class="descripcion-articulo">
+                                        </pre>
+                                    </div>
+                                    <div class="contenedor-cantidad-producto">
+                                        <label class="precio-articulo">
+                                            $@precio
+                                        </label>
+                                        <label class="cantidad-producto">
+                                            @productos[i].carrito.cantidadCar
+                                        </label>
+                                        <div class="controlador-cantidad">
+                                            <button class="boton-controlador" type="button" onclick="aumentar(this)">
+                                                <span class="ri-arrow-up-s-line"></span>
+                                            </button>
+                                            <button class="boton-controlador" type="button" onclick="disminuir(this)">
+                                                <i class="ri-arrow-down-s-line"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <i class="divisor"></i>
+                <div class="botones-compra">
+                    <button class="boton-compra" type="button" onclick="ir_a('/HomeUsuario/Pasarela')">
+                        Comprar
+                    </button>
+                    <button class="boton-cancelar" type="button" onclick="ir_a('/HomePrincipal/Index')">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-resumen">
+            @if (Session["Total"] != null)
+            {
+                double total = Convert.ToDouble(Session["Total"]);
+                double envio = Convert.ToDouble(Session["Envio"]);
+
+                total = Math.Round(total, 2);
+                envio = Math.Round(envio, 2);
+
+                <label class="titulo-resumen">
+                    Resumen
+                </label>
+                <i class="divisor"></i>
+                <div class="contenedor-subtotal">
+                    <label class="titulo-subtotal">
+                        SUBTOTAL
+                    </label>
+                    <label class="cantidad-subtotal">
+                        $@(total-(total*.16))
+                    </label>
+                </div>
+                <div class="contenedor-envio">
+                    <label class="titulo-envio">
+                        ENVIO
+                    </label>
+                    <label class="cantidad-envio">
+                        $@envio
+                    </label>
+                </div>
+                <div class="contenedor-impuestos">
+                    <label class="titulo-impuestos">
+                        IMPUESTOS
+                    </label>
+                    <label class="cantidad-impuestos">
+                        $@(total*.16)
+                    </label>
+                </div>
+                <i class="divisor"></i>
+                <div class="contenedor-total">
+                    <label class="titulo-total">
+                        TOTAL
+                    </label>
+                    <label class="cantidad-total">
+                        $@total
+                    </label>
+                </div>
+            }
+
+
+        </div>
+    }
+    else
+    {
+        <div class="mensaje-fallo">
+            <label class="titulo">
+                Lo Lamento
+            </label>
+            <label>
+                Oops, parece que tu carrito está vacío. No te preocupes, todavía tienes mucho por descubrir en nuestra tienda.
+            </label>
+            <button type="button" class="boton-fallo" onclick="ir_a('/HomePrincipal/Index')">
+                Regresar
+            </button>
+        </div>
+    }
+</div>
+

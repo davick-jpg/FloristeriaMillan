@@ -1,0 +1,115 @@
+﻿<div class="contenedor-ventas">
+    <div class="header">
+        <i class="titulo">
+            Ventas
+        </i>
+    </div>
+    <div class="contenedor-principal">
+        <div class="contenedor-produc">
+            <div class="contenedor-componentes">
+                <i class="titulo">
+                    Articulos
+                </i>
+
+            </div>
+        </div>
+        <div class="contenedor-divisor">
+            <div class="contenedor-articulos">
+                <i class="titulo">
+                    Agregar Articulo
+                </i>
+                @using (Html.BeginForm())
+                                {
+                <div class="buscador">
+                    <input type="text" name="articulo" placeholder="Buscar articulo..." onkeyup="buscar_producto_venta()" />
+                    <button class="boton-buscar">
+                        <span class="material-icons-outlined">
+                            search
+                        </span>
+                    </button>
+                    <div class="sugerencias">
+
+                    </div>
+                </div>
+                <div class="informacion-articulo">
+                    <img src="https://localhost:44394/Imagenes/logo.png" alt="Alternate Text" />
+                    <div class="descripcion-articulo">
+                        <i class="nombre-articulo">
+                        </i>
+                        <i class="precio-articulo">
+                        </i>
+                        <div class="spinner-cantidad">
+                            <i class="cantidad">
+                                1
+                            </i>
+                            <div class="contenedor-botones">
+                                <button class="aumentar" type="button" onclick="aumentar_venta(this)">
+                                    <span class="material-icons-outlined">
+                                        expand_less
+                                    </span>
+                                </button>
+                                <button class="disminuir" type="button" onclick="disminuir_venta(this)">
+                                    <span class="material-icons-outlined">
+                                        expand_more
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="agregar-articulo" onclick="agregar_componente_venta(this)">
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+                                }
+            </div>
+            <div class="contenedor-resumen">
+
+                <i class="titulo">
+                    Agregar Articulo
+                </i>
+                <div class="texto">
+                    <i>
+                        SUBTOTAL
+                    </i>
+                    <i class="subtotal cantidad">
+                        $00.00
+                    </i>
+                </div>
+                <div class="texto cantidad">
+                    <i>
+                        ENVIO
+                    </i>
+                    <i class="envio cantidad">
+                        $0.00
+                    </i>
+                </div>
+                <div class="texto">
+                    <i>
+                        IVA
+                    </i>
+                    <i class="iva cantidad">
+                        $00.00
+                    </i>
+                </div>
+                <i class="divisor"></i>
+                <div class="texto">
+                    <i>
+                        TOTAL
+                    </i>
+                    <i class="total cantidad">
+                        $00.00
+                    </i>
+                </div>
+
+            </div>
+            <div class="contenedor-controles">
+                <button class="boton-pagar" type="button" onclick="realizar_venta()">
+                    Procesar
+                </button>
+                <button class="boton-cancelar" type="button" onclick="cancelar_venta()">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

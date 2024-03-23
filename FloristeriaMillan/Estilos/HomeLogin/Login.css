@@ -1,0 +1,237 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+/*estilos para el header*/
+
+header {
+    background-color: var(--color-secundario);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+img#logo_header_login {
+    height: 80%;
+    width: auto;
+    margin-left: 15%;
+}
+
+/*configuracion caja de contenido*/
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 10vh;
+}
+
+/*configuracion del formulario*/
+
+div#boxForm {
+    background: var(--color-fondo-formularios1);
+    box-shadow: 0px 0px 11px 13px rgba(0, 0, 0, 0.5);
+    padding: 10% 10%;
+    border-radius: 8px;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+}
+
+label#titulo_login {
+    color: var(--color-primario);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    letter-spacing: 0.1rem;
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 20px;
+    text-shadow: rgba(1,1,1) 1px 1px 2px;
+}
+
+.inputbox {
+    position: relative;
+    width: 100%;
+    margin-top: 35px;
+}
+
+    .inputbox input {
+        position: relative;
+        width: 100%;
+        padding: 8px 5px 5px;
+        background: transparent;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        color: var(--color-fondo-formularios1);
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        transition: 0.5s;
+        z-index: 10;
+        font-weight: 600;
+    }
+
+    .inputbox span {
+        position: absolute;
+        left: 0;
+        padding: 5px 0px 5px;
+        pointer-events: none;
+        color: var(--color-primario-claro);
+        font-weight: lighter;
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        transition: 0.5s;
+    }
+
+    .inputbox input:valid ~ span,
+    .inputbox input:focus ~ span {
+        color: var(--color-primario);
+        font-size: 1rem;
+        transform: translateY(-1.8rem);
+    }
+
+    .inputbox i {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--color-primario);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: 0.5s;
+        pointer-events: none;
+    }
+
+    .inputbox input:valid ~ i,
+    .inputbox input:focus ~ i {
+        height: 41px;
+    }
+
+form .links {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+    form .links a {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: var(--color-primario) !important;
+        font-weight: bold;
+    }
+
+        form .links a:hover {
+            color: var(--color-primario);
+            text-decoration: underline var(--color-primario);
+        }
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px 0px 10px;
+}
+
+form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 9px 9px;
+    background: var(--color-secundario-botones);
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    width: auto;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+    form input[type="submit"]:active {
+        opacity: 0.8;
+    }
+
+    form input[type="submit"]:hover {
+        opacity: 1;
+        background: var(--color-primario-botones);
+        box-shadow: rgba(0,0,0,0.5) 3px 3px 0px 0px;
+        transform: translateY(-3px);
+    }
+
+
+@media (max-height:599px) {
+    html {
+        font-size: 5%;
+    }
+
+    div#boxRegistro {
+        width: 220px;
+        height: 290px;
+    }
+
+    label#titulo_login {
+        margin-bottom: 0px;
+    }
+
+    div .inputbox {
+        margin-top: 15px
+    }
+
+    .inputbox input:valid ~ i,
+    .inputbox input:focus ~ i {
+        height: 30px;
+    }
+}
+
+@media(min-width: 801px) {
+    html {
+        font-size: 100%;
+    }
+
+    form input[type="submit"] {
+        margin-top: 30px;
+    }
+
+    div#boxRegistro {
+        width: 600px;
+        height: 690px;
+    }
+
+    div#box {
+        width: 600px;
+        height: 690px;
+    }
+}
+
+@media(max-width:800px), (max-height:800px) {
+    html {
+        font-size: 66%;
+    }
+
+    div#boxRegistro {
+        width: 350px;
+        height: 390px;
+    }
+
+    div .inputbox {
+        margin-top: 20px
+    }
+
+    .inputbox input:valid ~ i,
+    .inputbox input:focus ~ i {
+        height: 30px;
+    }
+}

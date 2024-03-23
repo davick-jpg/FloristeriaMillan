@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/PlantillaUsuario/_PlantillaUsuario.cshtml";
+}
+
+<div class="contenedor-perfil">
+    <div class="contenedor-icono">
+        <span class="ri-user-4-line"></span>
+    </div>
+    @if (Session["UsuarioActual"] != null)
+    {
+        FloristeriaMillan.Models.Usuarios usuario = (FloristeriaMillan.Models.Usuarios)Session["UsuarioActual"];
+        using (Html.BeginForm(new { id = "formulario" }))
+        {
+            <div class="contenedor-nombre">
+                <div class="inputbox">
+                    <input type="text" required name="nombre" value="@usuario.nombreCli">
+                    <span>Nombre</span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="inputbox">
+                <input type="text" required name="calle" value="@usuario.calleCli">
+                <span>Calle</span>
+                <i></i>
+            </div>
+            <div class="contenedor-direccion">
+                <div class="inputbox">
+                    <input type="text" required name="colonia" value="@usuario.coloniaCli">
+                    <span>Colonia</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="text" required name="municipio" value="@usuario.municipioCli">
+                    <span>Municipio</span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="inputbox">
+                <input type="text" required name="codigo_postal" value="@usuario.codigoPostalCli">
+                <span>Codigo postal</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="text" required name="numero" value="@usuario.telefonoCli">
+                <span>Telefono</span>
+                <i></i>
+            </div>
+        }
+    }
+    <i class="divisor"></i>
+    <div class="contenedor-botones">
+        <button class="boton-aceptar" type="button" onclick="enviar()">
+            <label>
+                guardar
+            </label>
+        </button>
+        <button class="boton-cancelar" type="button" onclick="recargar()">
+            <label>
+                cancelar
+            </label>
+        </button>
+    </div>
+</div>
+

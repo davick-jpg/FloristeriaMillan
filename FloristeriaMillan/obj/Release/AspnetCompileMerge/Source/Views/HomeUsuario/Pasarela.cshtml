@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "Pasarela";
+    Layout = "~/Views/Shared/PlantillaUsuario/_PlantillaUsuario.cshtml";
+}
+
+@if (Session["Carrito"] != null && ((FloristeriaMillan.Querys.Logica_CanalUsuarios.CarritoProducto[])Session["Carrito"]).Length > 0)
+{
+    <div class="contenedor-direccion-pasarela">
+        <div class="contenedor-divisor">
+            <label class="titulo">
+                Direcciones
+            </label>
+            <i class="divisor"></i>
+            <div class="formulario-direccion">
+                @using (Html.BeginForm())
+                {
+                    <div class="inputbox">
+                        <input type="text" required name="calle">
+                        <span>Calle</span>
+                        <i></i>
+                    </div>
+                    <div class="contenedor-direccion">
+                        <div class="inputbox">
+                            <input type="text" required name="colonia">
+                            <span>Colonia</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox">
+                            <input type="text" required name="municipio">
+                            <span>Municipio</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" required name="cpostal">
+                        <span>Codigo postal</span>
+                        <i></i>
+                    </div>
+                }
+            </div>
+            @if (Session["Direccion_pedido"] != null && ((FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion[])Session["Direccion_pedido"]).Length > 0)
+            {
+                <i class="divisor"></i>
+                FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion[] direcciones = (FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion[])Session["Direccion_pedido"];
+                <div class="contenedor-direccion">
+                    <label class="titulo-direccion">
+                        Direcciones guardadas
+                    </label>
+                    <div class="agenda-direcciones">
+                        @foreach (FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion direccion in direcciones)
+                        {
+                            <div class="tarjeta-direccion">
+                                <label class="radio-direccion">
+                                    <input type="radio" name="direccionSeleccionada">
+                                    <div class="direccion">
+                                        <label class="identificador">
+                                            @direccion.direccion.nombreDir
+                                        </label>
+                                        <label class="descripcion-identificador">
+                                            @direccion.descripcion
+                                        </label>
+                                    </div>
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            <i class="divisor"></i>
+            <div class="botones-compra">
+                <form class="checkout" action="/Stripe/CreateCheckoutSession" method="POST">
+                    <button class="boton-compra" type="button" onclick="generar_checkout()">
+                        Comprar
+                    </button>
+                </form>
+                <button class="boton-cancelar" type="button" onclick="ir_a('/HomePrincipal/Index')">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+        <div class="contenedor-control">
+            <div class="contenedor-resumen">
+                @if (Session["Total"] != null)
+                {
+                    double total = Convert.ToDouble(Session["Total"]);
+                    double envio = Convert.ToDouble(Session["Envio"]);
+
+                    <label class="titulo-resumen">
+                        Resumen
+                    </label>
+                    <i class="divisor"></i>
+                    <div class="contenedor-subtotal">
+                        <label class="titulo-subtotal">
+                            SUBTOTAL
+                        </label>
+                        <label class="cantidad-subtotal">
+                            $@(total-(total*.16))
+                        </label>
+                    </div>
+                    <div class="contenedor-envio">
+                        <label class="titulo-envio">
+                            ENVIO
+                        </label>
+                        <label class="cantidad-envio">
+                            $@envio
+                        </label>
+                    </div>
+                    <div class="contenedor-impuestos">
+                        <label class="titulo-impuestos">
+                            IMPUESTOS
+                        </label>
+                        <label class="cantidad-impuestos">
+                            $@(total*.16)
+                        </label>
+                    </div>
+                    <i class="divisor"></i>
+                    <div class="contenedor-total">
+                        <label class="titulo-total">
+                            TOTAL
+                        </label>
+                        <label class="cantidad-total">
+                            $@total
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="contenedor-fecha-entrega">
+                <div class="titulo">
+                    Fecha de entrega
+                </div>
+                <i class="divisor"></i>
+                <div class="contenedor-fecha">
+                    <input type="date" name="fecha" oninput="mostrar_horas()" />
+                </div>
+                <div class="contenedor-hora">
+                    <div class="titulo">
+                        Hora de entrega
+                    </div>
+                    <i class="divisor"></i>
+                    <div class="horas">
+                        <div class="radio-hora">
+                            <input type="radio" id="rango1" name="rango">
+                            <label for="rango1">8:00</label><br>
+                        </div>
+                        <div class="radio-hora">
+                            <input type="radio" id="rango2" name="rango">
+                            <label for="rango2">2:00</label><br>
+                        </div>
+                        <div class="radio-hora">
+                            <input type="radio" id="rango3" name="rango">
+                            <label for="rango3">6:00</label><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="mensaje-fallo">
+        <label class="titulo">
+            Lo Lamento
+        </label>
+        <label>
+            Oops, parece que tu carrito está vacío. No te preocupes, todavía tienes mucho por descubrir en nuestra tienda.
+        </label>
+        <button type="button" class="boton-fallo" onclick="ir_a('/HomePrincipal/Index')">
+            Regresar
+        </button>
+    </div>
+}

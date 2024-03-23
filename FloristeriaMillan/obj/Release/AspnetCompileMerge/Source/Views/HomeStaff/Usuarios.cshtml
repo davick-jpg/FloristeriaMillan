@@ -1,0 +1,97 @@
+﻿
+<div class="contenedor-usuarios">
+    <div class="contenedor-header">
+        <label>
+            Usuarios
+        </label>
+        <button class="agregar-usuario" type="button" onclick="mostrar_vista_parcial()">
+            <label>
+                agregar usuario
+            </label>
+            <span class="material-icons-outlined">
+                add
+            </span>
+        </button>
+    </div>
+    <div class="contenedor-tabla">
+        <table>
+            <tr class="encabezados">
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th>Telefono</th>
+                <th>Rol</th>
+            </tr>
+            @if (Session["Usuarios"] != null)
+            {
+                var usuarios = (FloristeriaMillan.Models.Usuarios[])Session["Usuarios"];
+                foreach (var usuario in usuarios)
+                {
+                    <tr class="usuarios">
+                        <td class="datos" onclick="buscar_usuario(this)">@usuario.nombreCli</td>
+                        <td class="datos" onclick="buscar_usuario(this)">@usuario.emailCli</td>
+                        <td class="datos" onclick="buscar_usuario(this)">@usuario.passwordCli</td>
+                        <td class="datos" onclick="buscar_usuario(this)">@usuario.telefonoCli</td>
+                        <td class="datos" onclick="buscar_usuario(this)">@usuario.idRol</td>
+                        <td>
+                            <button class="boton-eliminar" type="button" onclick="eliminar_usuario(this)">
+                                <span class="material-icons-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="vista-parcial">
+        <div class="d-flex flex-column boxForm-usuario" id="boxForm">
+            @using (Html.BeginForm())
+            {
+                <label id="titulo_login">Usuario</label>
+
+                <div class="inputbox">
+                    <input type="text" required name="nombre">
+                    <span>Nombre</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="text" required name="email">
+                    <span>Email</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="password" required name="password">
+                    <span>Contraseña</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="tel" required pattern="[0-9]{10}" name="telefono" maxlength="10">
+                    <span>Telefono</span>
+                    <i></i>
+                </div>
+                <div class="combobox">
+                    <select class="clase" name="rol">
+                        <option class="rol" selected>Seleccione un rol</option>
+                        @if (Session["Roles"] != null)
+                        {
+                            var roles = (FloristeriaMillan.Models.Rol[])Session["Roles"];
+                            foreach (var rol in roles)
+                            {
+                                <option class="rol">@rol.nombreRol</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="botones">
+                    <input type="button" value="Registrar" onclick="enviar_datos_usuario()">
+                    <input type="button" value="Cancelar" onclick="cerrarventana_usuario()" id="cancelar">
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+

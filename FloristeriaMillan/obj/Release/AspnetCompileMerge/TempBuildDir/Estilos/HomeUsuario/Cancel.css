@@ -1,0 +1,42 @@
+﻿@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion Cancel */
+
+.contenedor-cancel {
+    width: 60%;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    margin-left: 20%;
+    align-items: center;
+    row-gap: 15px;
+    position: relative;
+}
+
+    .contenedor-cancel .contenedor-titulo {
+        font-size: 4rem;
+        color: var(--color-primario);
+        width: 70%;
+        text-align: center;
+    }
+
+    .contenedor-cancel .contenedor-mensaje {
+        font-size: 1.5rem;
+        color: var(--color-secundario);
+        width: 80%;
+        text-align: justify;
+    }
+
+    .contenedor-cancel button {
+        background: transparent;
+        border: transparent;
+        color: var(--color-primario);
+        font-size: 2rem;
+        cursor: pointer;
+    }

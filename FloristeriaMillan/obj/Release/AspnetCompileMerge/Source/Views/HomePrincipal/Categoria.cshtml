@@ -1,0 +1,253 @@
+﻿
+@{
+    ViewBag.Title = "Categoria";
+    Layout = "~/Views/Shared/PlantillaPrincipal/_PlantillaPrincipal.cshtml";
+}
+
+<div class="banner-fijo-index">
+    @if (Session["Categoria"] != null)
+    {
+        FloristeriaMillan.Models.Categorias categoria = (FloristeriaMillan.Models.Categorias)Session["Categoria"];
+        String url = "/Imagenes/HomePrincipal/Categoria/Banners/banner-fijo-categoria-" + categoria.nombreCat.ToLower().Replace(" ", "") + ".png";
+        <img src=@url alt="Floristeria Millan" />
+        <div class="contenido-banner-fijo-index">
+            <label class="titulo-banner-fijo-index">
+                @categoria.nombreCat
+            </label>
+            <label class="subtitulo-banner-fijo-index">
+                @categoria.descripcionCat
+            </label>
+        </div>
+    }
+</div>
+
+<div class="main-categoria">
+    @*<div class="contenedor-filtros">
+            <label class="titulo-filtros">
+                Filtros
+            </label>
+            <div class="contenedor-desplegar-cont-filtros">
+                <button class="desplegar-cont-boton" type="button" id="desplegar-cont-boton">
+                    <span class="material-icons-outlined">
+                        add
+                    </span>
+                </button>
+                <button class="contraer-cont-boton" type="button" id="contraer-cont-boton">
+                    <span class="material-icons-outlined">
+                        remove
+                    </span>
+                </button>
+            </div>
+            <i class="divisor-categoria"></i>
+            @if (ViewBag.Filtros != null)
+            {
+                List<List<String>> filtros = ViewBag.Filtros;
+                for (int i = 0; i < filtros.Count; i++)
+                {
+                    <div class="contenedor-clase-filtros">
+                        <div class="contenedor-titulo-filtros">
+                            <label class="titulo-clase-filtros">
+                                @filtros[i][0]
+                            </label>
+                            <div class="contenedor-desplegar-filtros">
+                                <button class="desplegar-boton" type="button">
+                                    <span class="material-icons-outlined">
+                                        add
+                                    </span>
+                                </button>
+                                <button class="contraer-boton" type="button">
+                                    <span class="material-icons-outlined">
+                                        remove
+                                    </span>
+                                </button>
+                            </div>
+                            <i class="divisor-categoria"></i>
+                        </div>
+                        <div class="contenedor-botones-filtro">
+                            @for (int j = 1; j < filtros[i].Count; j++)
+                            {
+                                <div class="contenedor-filtro">
+                                    <button type="button" class="boton-filtro">
+                                        <label>
+                                            @filtros[i][j]
+                                        </label>
+                                        <div class="conteneddor-radio-botones">
+                                            <span class="material-icons-outlined" id="checked">
+                                                radio_button_checked
+                                            </span>
+                                            <span class="material-icons-outlined" id="unchecked">
+                                                radio_button_unchecked
+                                            </span>
+                                        </div>
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        </div>*@
+
+    <div class="contenedor-principal">
+        <div class="contenedor-clasificaciones">
+            <div class="contenedor-clases">
+                @using (Html.BeginForm("filtrar_catalogo", "HomePrincipal"))
+                {
+                    if (Session["Clases"] != null)
+                    {
+                        FloristeriaMillan.Models.Clases[] clases = (FloristeriaMillan.Models.Clases[])Session["Clases"];
+                        String claseActiva = "";
+                        if (Session["ClaseActiva"] != null)
+                        {
+                            claseActiva = (String)Session["ClaseActiva"];
+                        }
+                        for (int i = 0; i < clases.Length; i++)
+                        {
+                            if (clases[i].nombreCla == claseActiva)
+                            {
+                                <input type="radio" name="nombreCla" value='@clases[i].nombreCla' id='@clases[i].nombreCla' onclick="filtrar_catalogo(this)" checked />
+                                <label for='@clases[i].nombreCla'>
+                                    @clases[i].nombreCla
+                                </label>
+                            }
+                            else
+                            {
+                                <input type="radio" name="nombreCla" value='@clases[i].nombreCla' id='@clases[i].nombreCla' onclick="filtrar_catalogo(this)" />
+                                <label for='@clases[i].nombreCla'>
+                                    @clases[i].nombreCla
+                                </label>
+                            }
+                        }
+                    }
+                }
+            </div>
+
+            <div class="contenedor-ordenamiento">
+                <div class="contenedor-orden-actual">
+                    <label>Ordenar por:</label>
+                    <button type="button" class="button-orden" id="button-orden">
+                        <label class="orden" id="orden">
+                            Mas relevantes
+                        </label>
+                        <span class="material-icons-outlined" id="icono-orden">
+                            expand_more
+                        </span>
+                    </button>
+                </div>
+                <div class="contenedor-tipos-orden" id="contenedor-tipos-orden">
+                    <button class="button-tipo-orden">
+                        <label class="tipo-orden">
+                            Mayor a menor $
+                        </label>
+                    </button>
+                    <i class="divisor-combo"></i>
+                    <button class="button-tipo-orden">
+                        <label class="tipo-orden">
+                            Menor a mayor $
+                        </label>
+                    </button>
+                    <i class="divisor-combo"></i>
+                    <button class="button-tipo-orden">
+                        <label class="tipo-orden">
+                            Mas relevantes
+                        </label>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-productos">
+            @if (Session["Catalogo"] != null)
+            {
+                FloristeriaMillan.Models.Producto[] catalogo = (FloristeriaMillan.Models.Producto[])Session["Catalogo"];
+                for (int i = 0; i < catalogo.Length; i++)
+                {
+                    <div class="contenedor-tarjeta">
+                        <div class="contenedor-favoritos">
+                            @if (Session["Favoritos"] != null && ((FloristeriaMillan.Models.Producto[])Session["Favoritos"]).Length > 0)
+                            {
+                                FloristeriaMillan.Models.Producto[] favoritos = (FloristeriaMillan.Models.Producto[])Session["Favoritos"];
+
+                                var bandera = false;
+
+                                for (int j = 0; j < favoritos.Length; j++)
+                                {
+                                    if (catalogo[i].nombrePro == favoritos[j].nombrePro)
+                                    {
+                                        bandera = true;
+                                        j = favoritos.Length;
+                                    }
+                                    else
+                                    {
+                                        bandera = false;
+                                    }
+                                }
+
+                                if (bandera)
+                                {
+
+                                    <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:flex">
+                                        <span class="material-icons-outlined">
+                                            favorite
+                                        </span>
+                                    </button>
+
+                                    <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:none">
+                                        <span class="material-icons-outlined">
+                                            favorite_border
+                                        </span>
+                                    </button>
+
+                                }
+                                else
+                                {
+                                    <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:none">
+                                        <span class="material-icons-outlined">
+                                            favorite
+                                        </span>
+                                    </button>
+
+                                    <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:flex">
+                                        <span class="material-icons-outlined">
+                                            favorite_border
+                                        </span>
+                                    </button>
+
+                                }
+                            }
+                            else
+                            {
+                                <button class="boton-favoritos" type="button" onclick="quitar_favorito(this)" style="display:none">
+                                    <span class="material-icons-outlined">
+                                        favorite
+                                    </span>
+                                </button>
+
+                                <button class="boton-unfavoritos" type="button" onclick="agregar_favorito(this)" style="display:flex">
+                                    <span class="material-icons-outlined">
+                                        favorite_border
+                                    </span>
+                                </button>
+                            }
+                        </div>
+                        <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 1)" offset="0%"></stop><stop stop-color="rgba(45, 44, 38, 0.69)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,49L120,57.2C240,65,480,82,720,138.8C960,196,1200,294,1440,343C1680,392,1920,392,2160,359.3C2400,327,2640,261,2880,212.3C3120,163,3360,131,3600,122.5C3840,114,4080,131,4320,138.8C4560,147,4800,147,5040,196C5280,245,5520,343,5760,351.2C6000,359,6240,278,6480,204.2C6720,131,6960,65,7200,57.2C7440,49,7680,98,7920,147C8160,196,8400,245,8640,269.5C8880,294,9120,294,9360,253.2C9600,212,9840,131,10080,89.8C10320,49,10560,49,10800,114.3C11040,180,11280,310,11520,334.8C11760,359,12000,278,12240,228.7C12480,180,12720,163,12960,130.7C13200,98,13440,49,13680,73.5C13920,98,14160,196,14400,220.5C14640,245,14880,196,15120,155.2C15360,114,15600,82,15840,73.5C16080,65,16320,82,16560,98C16800,114,17040,131,17160,138.8L17280,147L17280,490L17160,490C17040,490,16800,490,16560,490C16320,490,16080,490,15840,490C15600,490,15360,490,15120,490C14880,490,14640,490,14400,490C14160,490,13920,490,13680,490C13440,490,13200,490,12960,490C12720,490,12480,490,12240,490C12000,490,11760,490,11520,490C11280,490,11040,490,10800,490C10560,490,10320,490,10080,490C9840,490,9600,490,9360,490C9120,490,8880,490,8640,490C8400,490,8160,490,7920,490C7680,490,7440,490,7200,490C6960,490,6720,490,6480,490C6240,490,6000,490,5760,490C5520,490,5280,490,5040,490C4800,490,4560,490,4320,490C4080,490,3840,490,3600,490C3360,490,3120,490,2880,490C2640,490,2400,490,2160,490C1920,490,1680,490,1440,490C1200,490,960,490,720,490C480,490,240,490,120,490L0,490Z"></path></svg>
+                        <img src=@catalogo[i].fotoPro alt="" class="imagen-tarjeta" />
+                        <div class="contenido-tarjeta">
+                            <label class="titulo-tarjeta">
+                                @catalogo[i].nombrePro
+                            </label>
+                            <label class="descripcion-tarjeta">
+                                @catalogo[i].descripcionPro
+                            </label>
+                            <label class="precio-tarjeta">
+                                $@catalogo[i].precioPro
+                            </label>
+                            <Button type="button" class="boton-tarjeta" onclick="ir_articulo('@catalogo[i].nombrePro')">
+                                comprar
+                            </Button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

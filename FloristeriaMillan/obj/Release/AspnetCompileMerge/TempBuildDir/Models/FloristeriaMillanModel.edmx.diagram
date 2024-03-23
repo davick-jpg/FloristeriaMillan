@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3424f2b51e21400489695cd2cbeddda5" Name="Diagram1">
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Articulos" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Carrito" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Cartera_proveedores" Width="1.5" PointX="10.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Categorias" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Clases" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Componentes_producto" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Contacto_proveedor" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.DireccionesCliente" Width="1.5" PointX="10.5" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Factura" Width="1.5" PointX="11.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Factura_desglosada" Width="1.5" PointX="13.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Favoritos" Width="1.5" PointX="10.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Filtros" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.FiltrosC" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.FiltrosCategoria" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.FiltrosClases" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Galeria" Width="1.5" PointX="10.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Modulo" Width="1.5" PointX="3.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Operaciones" Width="1.5" PointX="6" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Producto" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Proveedores" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Rol" Width="1.5" PointX="6" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Rol_operacion" Width="1.5" PointX="8.25" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloristeriaMillanModel.Usuarios" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="FloristeriaMillanModel.Cartera_proveedores_Articulos_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Componentes_producto_Articulos_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Carrito_Producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Carrito_Usuarios_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Cartera_proveedores_Producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Clases_Categorias_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.FiltrosCategoria_Categorias_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Producto_Categorias_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.FiltrosClases_Clases_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Producto_Clases_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Componentes_producto_Producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Contacto_proveedor_Proveedores_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.DireccionesCliente_Usuarios_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Factura_desglosada_Factura_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Factura_Usuarios_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Factura_desglosada_Producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Favoritos_Producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Favoritos_Usuarios_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Filtros_FiltrosCategoria_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.FiltrosC_FiltrosClases_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Galeria_Producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Operaciones_Modulo_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Rol_operacion_Operaciones_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Rol_operacion_Rol_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="FloristeriaMillanModel.Usuarios_Rol_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

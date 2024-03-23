@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/PlantillaLogin/_PlantillaLogin.cshtml";
+}
+
+<div class="d-flex flex-row justify-content-center align-items-center" id="boxRegistro">
+
+    <div class="d-flex flex-column" id="boxForm">
+        @using (Html.BeginForm())
+        {
+            <label id="titulo_login">Registro</label>
+
+            <div class="inputbox">
+                <input type="text" required name="email">
+                <span>Email</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="password" required name="password">
+                <span>Contraseña</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="text" required name="nombre">
+                <span>Nombre</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="text" required name="apellidos">
+                <span>Apellidos</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="tel" required name="telefono">
+                <span>Telefono</span>
+                <i></i>
+            </div>
+            <div class="botones">
+                <input type="submit" value="Registrar">
+                <input type="submit" value="Cancelar" onclick="goback()" id="cancelar">
+            </div>
+        }
+    </div>
+</div>
+

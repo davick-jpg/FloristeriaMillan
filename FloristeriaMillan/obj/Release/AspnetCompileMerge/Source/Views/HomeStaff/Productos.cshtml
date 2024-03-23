@@ -1,0 +1,176 @@
+﻿<div class="contenedor-productos">
+    <div class="contenedor-header">
+        <label>
+            Productos
+        </label>
+        <button class="agregar-producto" type="button" onclick="mostrar_vista_parcial()">
+            <label>
+                agregar producto
+            </label>
+            <span class="material-icons-outlined">
+                add
+            </span>
+        </button>
+    </div>
+    <div class="contenedor-tabla">
+        <table>
+            <tr class="encabezados">
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Clase</th>
+                <th>Descripcion</th>
+            </tr>
+            @if (Session["Productos"] != null)
+            {
+                FloristeriaMillan.Querys.Logica_Productos.ProductoClaseCategoria[] productos = (FloristeriaMillan.Querys.Logica_Productos.ProductoClaseCategoria[])Session["Productos"];
+                foreach (var producto in productos)
+                {
+                    <tr>
+                        <td>
+                            <img src=@producto.Producto.fotoPro alt="Alternate Text" />
+                        </td>
+                        <td class="datos">@producto.Producto.nombrePro</td>
+                        <td class="datos">@producto.Categoria.nombreCat</td>
+                        <td class="datos">@producto.Clase.nombreCla</td>
+                        <td class="datos descripcion">
+                            <pre>
+                            </pre>
+                        </td>
+                        <td>
+                            <button class="boton-eliminar" type="button" onclick="eliminar_producto(this)">
+                                <span class="material-icons-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="vista-parcial">
+        <div class="contenedor-componentes">
+            <i class="titulo">
+                Componentes
+            </i>
+
+        </div>
+        <div class="contenedor-divisor">
+            <div class="contenedor-articulos">
+                <i class="titulo">
+                    Agregar Articulo
+                </i>
+                @using (Html.BeginForm())
+                {
+                    <div class="buscador">
+                        <input type="text" name="articulo" placeholder="Buscar articulo..." onkeyup="buscar_producto()" />
+                        <button class="boton-buscar">
+                            <span class="material-icons-outlined">
+                                search
+                            </span>
+                        </button>
+                        <div class="sugerencias">
+
+                        </div>
+                    </div>
+                    <div class="informacion-articulo">
+                        <img src="https://localhost:44394/Imagenes/logo.png" alt="Alternate Text" />
+                        <div class="descripcion-articulo">
+                            <i class="nombre-articulo"></i>
+                            <i class="precio-articulo"></i>
+                            <div class="spinner-cantidad">
+                                <i class="cantidad">
+                                    1
+                                </i>
+                                <div class="contenedor-botones">
+                                    <button class="aumentar" type="button" onclick="aumentar(this)">
+                                        <span class="material-icons-outlined">
+                                            expand_less
+                                        </span>
+                                    </button>
+                                    <button class="disminuir" type="button" onclick="disminuir(this)">
+                                        <span class="material-icons-outlined">
+                                            expand_more
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" class="agregar-articulo" onclick="agregar_componente(this)">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="contenedor-informacion-articulo">
+                <div class="d-flex flex-column" id="boxForm">
+                    <label class="titulo">Producto</label>
+                    @using (Html.BeginForm("Productos", "HomeStaff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="contenedor-formularios">
+                            <div class="inputbox archivo">
+                                <div class="galeria">
+                                    <div class="contenedor-imagen principal">
+                                        <img src="https://localhost:44394/Imagenes/logo.png" alt="Alternate Text" />
+                                    </div>
+                                    <div class="imagenes-secundarias">
+                                        <div class="contenedor-imagen">
+                                            <img src="https://localhost:44394/Imagenes/logo.png" alt="Alternate Text" />
+                                        </div>
+                                        <div class="contenedor-imagen">
+                                            <img src="https://localhost:44394/Imagenes/logo.png" alt="Alternate Text" />
+                                        </div>
+                                        <div class="contenedor-imagen">
+                                            <img src="https://localhost:44394/Imagenes/logo.png" alt="Alternate Text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="file" name="fotoArt" id="imagen-articulo" onchange="img()" accept="image/png" multiple>
+                                <label for="imagen-articulo" class="boton-personalizado">
+                                    <span class="material-icons-outlined">
+                                        upload
+                                    </span>
+                                    <span>
+                                        Seleccionar Imagen
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="botones">
+                                <input type="button" value="Registrar" onclick="enviar_datos_productos()">
+                                <input type="button" value="Cancelar" onclick="cerrarventana_productos()" id="cancelar">
+                            </div>
+                            <div class="formulario">
+                                <div class="inputbox">
+                                    <input type="text" required name="nombrePro">
+                                    <span>Nombre</span>
+                                    <i></i>
+                                </div>
+                                <div class="datos-producto">
+                                    <div class="combobox">
+                                        <select class="categorias" name="nombreCla" onchange="buscar_clases(this.value)">
+                                            <option class="categoria" selected value="0">Seleccione una categoria</option>
+                                            @if (Session["Categorias"] != null)
+                                            {
+                                                FloristeriaMillan.Models.Categorias[] categorias = (FloristeriaMillan.Models.Categorias[])Session["Categorias"];
+                                                foreach (var categoria in categorias)
+                                                {
+                                                    <option class="categoria">@categoria.nombreCat</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="combobox">
+                                        <select class="clases" name="nombreCat">
+                                            <option class="clase" selected value="0">Seleccione una clase</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

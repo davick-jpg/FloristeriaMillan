@@ -1,0 +1,108 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion dashboard */
+
+main {
+    padding-top: 100px;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+    main .menu-staff {
+        width: 18%;
+        height: 100%;
+        background: var(--color-fondo-formularios1);
+        border-radius: 0px 0px 10px 0px;
+    }
+
+        main .menu-staff .contenedor-titulo-menu {
+            width: 100%;
+            height: 40px;
+            color: var(--color-primario);
+            background: var(--color-secundario);
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            main .menu-staff .contenedor-titulo-menu span {
+            }
+
+            main .menu-staff .contenedor-titulo-menu label {
+            }
+
+        main .menu-staff .contenedor-opciones {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+            main .menu-staff .contenedor-opciones .contenedor-opcion {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+                main .menu-staff .contenedor-opciones .contenedor-opcion .boton-opcion {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    width: 80%;
+                    height: 35px;
+                    margin-top: 10px;
+                    font-size: 1rem;
+                    color: var(--color-primario);
+                    background: var(--color-secundario);
+                    border: 2px solid var(--color-primario-claro);
+                    border-radius: 10px;
+                }
+
+                    main .menu-staff .contenedor-opciones .contenedor-opcion .boton-opcion:hover {
+                        background: var(--color-primario);
+                        border: 2px solid var(--color-secundario);
+                        color: var(--color-secundari);
+                        box-shadow: 1px 1px 5px var(--color-primario);
+                    }
+
+                main .menu-staff .contenedor-opciones .contenedor-opcion .boton-activo {
+                    border: 2px solid var(--color-secundario);
+                    border-right: transparent;
+                    background: var(--color-primario);
+                    box-shadow: #000 -11px 0px 10px 0px;
+                    color: var(--color-secundario);
+                    width: 90%;
+                    margin-left: 10%;
+                    border-radius: 10px 0px 0px 10px;
+                    z-index: 10;
+                }
+
+                main .menu-staff .contenedor-opciones .contenedor-opcion .boton-opcion span {
+                    margin-right: 10px;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+
+                main .menu-staff .contenedor-opciones .contenedor-opcion .boton-opcion label {
+                    cursor: pointer;
+                }
+
+#contenedor-opcion {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #000 -3px 0px 10px 0px;
+    background: linear-gradient(0deg, rgba(190,162,103,0.5452556022408963) 0%, rgba(190,162,103,1) 100%);
+    position: relative;
+}

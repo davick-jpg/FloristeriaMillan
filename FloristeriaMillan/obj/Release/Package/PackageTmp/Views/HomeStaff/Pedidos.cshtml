@@ -1,0 +1,198 @@
+﻿<div class="contenedor-pedidos">
+    <div class="header">
+        <i class="titulo">
+            Pedidos
+        </i>
+    </div>
+    <div class="body">
+        <div class="filtros">
+            <div class="combobox">
+                <select class="clase" title="Seleccione un tipo" onchange="filtrar_pedidos()">
+                    <option>Seleccione un tipo</option>
+                    <option>Todos</option>
+                    <option>Cancelado</option>
+                    <option>Finalizado</option>
+                    <option>En proceso</option>
+                </select>
+            </div>
+        </div>
+        <div class="contenedor-tarjetas">
+            @if (Session["Pedidos"] != null && ((FloristeriaMillan.Querys.Logica_Pedidos.FacturaUsuario[])Session["Pedidos"]).Length > 0)
+            {
+                FloristeriaMillan.Querys.Logica_Pedidos.FacturaUsuario[] facturas = (FloristeriaMillan.Querys.Logica_Pedidos.FacturaUsuario[])Session["Pedidos"];
+
+                for (int i = 0; i < facturas.Length; i++)
+                {
+                    String descipcion = facturas[i].descripcion;
+
+                    if (facturas[i].usuarios.idRol == 2 || facturas[i].usuarios.idRol == 3)
+                    {
+                        double total = Convert.ToDouble(facturas[i].factura.totalFac);
+                        <div class="tarjeta-pedido">
+                            <div class="estatus">
+                                <i class="nombre-cliente">
+                                    @facturas[i].usuarios.nombreCli
+                                </i>
+                                <div class="contenedor-botones">
+                                    @if (facturas[i].factura.estatusFac == 0)
+                                    {
+                                        <button type="button" class="enviar" onclick="finalizar_factura(this)">
+                                            Enviar
+                                        </button>
+
+                                        <button type="button" class="cancelar" onclick="cancelar_factura(this)">
+                                            Cancelar
+                                        </button>
+                                    }
+                                    else if (facturas[i].factura.estatusFac == 2)
+                                    {
+                                        <i class="Cancelado">
+                                            Cancelado
+                                        </i>
+                                    }
+                                    else
+                                    {
+                                        <i class="finalizado">
+                                            Finalizado
+                                        </i>
+                                    }
+                                </div>
+                            </div>
+                            <div class="contenedor-resumen">
+                                <i class="numero-pedido">
+                                    Pedido #@facturas[i].factura.idFac
+                                </i>
+                                <div class="resumen">
+                                    <i class="titulo">
+                                        Resumen
+                                    </i>
+                                    <i class="texto-resumen">
+                                        @descipcion
+                                    </i>
+                                </div>
+                                <div class="contenedor-direccion">
+                                    <i class="titulo">
+                                        Direccion de entrega
+                                    </i>
+                                    <i class="direccion-entrega">
+                                        @facturas[i].factura.direccionEntregaFac
+                                    </i>
+                                </div>
+                                <div class="contenedor-fecha">
+                                    <i class="titulo">
+                                        Fecha de entrega
+                                    </i>
+                                    <i class="fecha-entrega">
+                                        @facturas[i].factura.fechaEntregaFac
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="contenedor-pago">
+                                <i class="titulo">
+                                    Pago
+                                </i>
+                                <div class="texto">
+                                    <i>
+                                        SUBTOTAL
+                                    </i>
+                                    <i class="subtotal cantidad">
+                                        $@(total - (total * .16))
+                                    </i>
+                                </div>
+                                <div class="texto cantidad">
+                                    <i>
+                                        ENVIO
+                                    </i>
+                                    <i class="envio cantidad">
+                                        $0.00
+                                    </i>
+                                </div>
+                                <div class="texto">
+                                    <i>
+                                        IVA
+                                    </i>
+                                    <i class="iva cantidad">
+                                        $@(total * .16)
+                                    </i>
+                                </div>
+                                <i class="divisor"></i>
+                                <div class="texto">
+                                    <i>
+                                        TOTAL
+                                    </i>
+                                    <i class="total cantidad">
+                                        $@total
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (facturas[i].usuarios.idRol == 0 || facturas[i].usuarios.idRol == 1)
+                    {
+                        double total = Convert.ToDouble(facturas[i].factura.totalFac);
+
+                        <div class="tarjeta-pedido">
+                            <div class="estatus">
+                                <i class="nombre-cliente">
+                                    @facturas[i].usuarios.nombreCli
+                                </i>
+                                <div class="contenedor-botones">
+                                    <i class="finalizado">
+                                        Finalizado
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="contenedor-resumen">
+                                <i class="numero-pedido">
+                                    Pedido #@facturas[i].factura.idFac
+                                </i>
+                                <div class="mostrador">
+                                    Venta de mostrador
+                                </div>
+                            </div>
+                            <div class="contenedor-pago">
+                                <i class="titulo">
+                                    Pago
+                                </i>
+                                <div class="texto">
+                                    <i>
+                                        SUBTOTAL
+                                    </i>
+                                    <i class="subtotal cantidad">
+                                        $@(total - (total * .16))
+                                    </i>
+                                </div>
+                                <div class="texto cantidad">
+                                    <i>
+                                        ENVIO
+                                    </i>
+                                    <i class="envio cantidad">
+                                        $0.00
+                                    </i>
+                                </div>
+                                <div class="texto">
+                                    <i>
+                                        IVA
+                                    </i>
+                                    <i class="iva cantidad">
+                                        $@(total * .16)
+                                    </i>
+                                </div>
+                                <i class="divisor"></i>
+                                <div class="texto">
+                                    <i>
+                                        TOTAL
+                                    </i>
+                                    <i class="total cantidad">
+                                        $@total
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>

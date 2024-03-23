@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Direcciones";
+    Layout = "~/Views/Shared/PlantillaUsuario/_PlantillaUsuario.cshtml";
+}
+
+<div class="contenedor-direcciones">
+    <div class="formulario-direccion">
+        @using (Html.BeginForm())
+        {
+            <div class="inputbox">
+                <input type="text" required name="identificador">
+                <span>Identificador</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="text" required name="calle">
+                <span>Calle</span>
+                <i></i>
+            </div>
+            <div class="contenedor-direccion">
+                <div class="inputbox">
+                    <input type="text" required name="colonia">
+                    <span>Colonia</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="text" required name="municipio">
+                    <span>Municipio</span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="inputbox">
+                <input type="text" required name="cpostal">
+                <span>Codigo postal</span>
+                <i></i>
+            </div>
+        }
+        <div class="contenedor-botones">
+            <button class="boton-aceptar" type="button" onclick="mandar_datos()">
+                <label>
+                    guardar
+                </label>
+            </button>
+            <button class="boton-cancelar" type="button" onclick="recargar()">
+                <label>
+                    cancelar
+                </label>
+            </button>
+        </div>
+    </div>
+    <i class="divisor"></i>
+    @if (Session["Direcciones"] != null && ((FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion[])Session["Direcciones"]).Length > 0)
+    {
+        FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion[] direcciones = (FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion[])Session["Direcciones"];
+        <div class="contenedor-direccion">
+            <label class="titulo-direccion">
+                Direcciones guardadas
+            </label>
+            <div class="agenda-direcciones">
+                @foreach (FloristeriaMillan.Querys.Logica_CanalUsuarios.DireccionDescripcion direccion in direcciones)
+                {
+                    <div class="tarjeta-direccion">
+                        <button type="button" class="boton-direccion" onclick="buscar_informacion(this)">
+                            <div class="direccion">
+                                <label class="identificador">
+                                    @direccion.direccion.nombreDir
+                                </label>
+                                <label class="descripcion-identificador">
+                                    @direccion.descripcion
+                                </label>
+                            </div>
+                        </button>
+                        <button class="eliminar-direccion" onclick="eliminar_direccion(this)">
+                            <span class="ri-delete-bin-line"></span>
+                        </button>
+                    </div>
+                }
+                <i class="divisor"></i>
+            </div>
+        </div>
+    }
+</div>
+

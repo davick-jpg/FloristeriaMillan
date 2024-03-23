@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FloristeriaMillanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Articulos">
+    <Key>
+      <PropertyRef Name="idArt" />
+    </Key>
+    <Property Name="idArt" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="precioArt" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="nombreArt" Type="varchar" MaxLength="100" />
+    <Property Name="descripcionArt" Type="varchar" MaxLength="150" />
+    <Property Name="precioDistribuidorArt" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="precioComercialArt" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="stockMinimoArt" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="stockArt" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="fotoArt" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Carrito">
+    <Key>
+      <PropertyRef Name="idCar" />
+    </Key>
+    <Property Name="idCar" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idUsu" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="idPro" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="DescripcionCar" Type="nchar" MaxLength="300" />
+    <Property Name="cantidadCar" Type="decimal" Precision="5" Scale="0" />
+  </EntityType>
+  <EntityType Name="Cartera_proveedores">
+    <Key>
+      <PropertyRef Name="idCar" />
+    </Key>
+    <Property Name="idCar" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="idArt" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idProv" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="temporadaCar" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="idCat" />
+    </Key>
+    <Property Name="idCat" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreCat" Type="varchar" MaxLength="150" />
+    <Property Name="descripcionCat" Type="nchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Clases">
+    <Key>
+      <PropertyRef Name="idCla" />
+    </Key>
+    <Property Name="idCla" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="idCat" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreCla" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Componentes_producto">
+    <Key>
+      <PropertyRef Name="idComPro" />
+    </Key>
+    <Property Name="idComPro" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idArt" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idPro" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="cantidadComPro" Type="decimal" Precision="5" Scale="0" />
+  </EntityType>
+  <EntityType Name="Contacto_proveedor">
+    <Key>
+      <PropertyRef Name="idProvCon" />
+    </Key>
+    <Property Name="idProvCon" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="idProv" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreCon" Type="varchar" MaxLength="150" />
+    <Property Name="telefonoCon" Type="decimal" Precision="13" Scale="0" />
+    <Property Name="emailCon" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DireccionesCliente">
+    <Key>
+      <PropertyRef Name="idDir" />
+    </Key>
+    <Property Name="idDir" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idUsu" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreDir" Type="varchar" MaxLength="50" />
+    <Property Name="direccionDir" Type="varchar" MaxLength="150" />
+    <Property Name="calleDir" Type="nchar" MaxLength="150" />
+    <Property Name="coloniaDir" Type="nchar" MaxLength="150" />
+    <Property Name="municipioDir" Type="nchar" MaxLength="150" />
+    <Property Name="codigoPostalCli" Type="decimal" Precision="5" Scale="0" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="idFac" />
+    </Key>
+    <Property Name="idFac" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idUsu" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="fechaEntregaFac" Type="date" />
+    <Property Name="totalFac" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="direccionEntregaFac" Type="varchar" MaxLength="150" />
+    <Property Name="metodoPagoFac" Type="varchar" MaxLength="50" />
+    <Property Name="estatusFac" Type="decimal" Precision="1" Scale="0" />
+    <Property Name="dedicatoriaFac" Type="varchar" MaxLength="450" />
+  </EntityType>
+  <EntityType Name="Factura_desglosada">
+    <Key>
+      <PropertyRef Name="idFacDes" />
+    </Key>
+    <Property Name="idFacDes" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idFac" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idPro" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="cantidadProductoFacDes" Type="decimal" Precision="2" Scale="0" />
+    <Property Name="totalParcialFacDes" Type="decimal" Precision="6" Scale="2" />
+  </EntityType>
+  <EntityType Name="Favoritos">
+    <Key>
+      <PropertyRef Name="idFav" />
+    </Key>
+    <Property Name="idFav" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idPro" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="idUsu" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Filtros">
+    <Key>
+      <PropertyRef Name="idFil" />
+    </Key>
+    <Property Name="idFil" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="idFilCat" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="filtro" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FiltrosC">
+    <Key>
+      <PropertyRef Name="idFilC" />
+    </Key>
+    <Property Name="idFilC" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="idFilCla" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="filtro" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FiltrosCategoria">
+    <Key>
+      <PropertyRef Name="idFilCat" />
+    </Key>
+    <Property Name="idFilCat" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="idCat" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreFiltroCat" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FiltrosClases">
+    <Key>
+      <PropertyRef Name="idFilCla" />
+    </Key>
+    <Property Name="idFilCla" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="idCla" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreFiltroCla" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Galeria">
+    <Key>
+      <PropertyRef Name="idGal" />
+    </Key>
+    <Property Name="idGal" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idPro" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="idMod" />
+    </Key>
+    <Property Name="idMod" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="nombreMod" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Operaciones">
+    <Key>
+      <PropertyRef Name="idOpe" />
+    </Key>
+    <Property Name="idOpe" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreOpe" Type="varchar" MaxLength="50" />
+    <Property Name="idMod" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="idPro" />
+    </Key>
+    <Property Name="idPro" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="fotoPro" Type="varchar" MaxLength="100" />
+    <Property Name="nombrePro" Type="varchar" MaxLength="50" />
+    <Property Name="descripcionPro" Type="varchar" MaxLength="150" />
+    <Property Name="idCat" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="idCla" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="precioPro" Type="decimal" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="idProv" />
+    </Key>
+    <Property Name="idProv" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreEmpresaProv" Type="varchar" MaxLength="100" />
+    <Property Name="direccionEmpresaProv" Type="varchar" MaxLength="100" />
+    <Property Name="telefonoEmpresaProv" Type="decimal" Precision="13" Scale="0" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="nombreRol" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Rol_operacion">
+    <Key>
+      <PropertyRef Name="idRolOpe" />
+    </Key>
+    <Property Name="idRolOpe" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="idRol" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="idOpe" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="idUsu" />
+    </Key>
+    <Property Name="idUsu" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="nombreCli" Type="varchar" MaxLength="150" />
+    <Property Name="emailCli" Type="varchar" MaxLength="50" />
+    <Property Name="passwordCli" Type="varchar" MaxLength="30" />
+    <Property Name="telefonoCli" Type="decimal" Precision="13" Scale="0" />
+    <Property Name="idRol" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="calleCli" Type="nchar" MaxLength="150" />
+    <Property Name="coloniaCli" Type="nchar" MaxLength="150" />
+    <Property Name="municipioCli" Type="nchar" MaxLength="150" />
+    <Property Name="codigoPostalCli" Type="decimal" Precision="5" Scale="0" />
+  </EntityType>
+  <Association Name="Carrito_Producto_FK">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idPro" />
+      </Principal>
+      <Dependent Role="Carrito">
+        <PropertyRef Name="idPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Carrito_Usuarios_FK">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsu" />
+      </Principal>
+      <Dependent Role="Carrito">
+        <PropertyRef Name="idUsu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cartera_proveedores_Articulos_FK">
+    <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+    <End Role="Cartera_proveedores" Type="Self.Cartera_proveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulos">
+        <PropertyRef Name="idArt" />
+      </Principal>
+      <Dependent Role="Cartera_proveedores">
+        <PropertyRef Name="idArt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cartera_proveedores_Producto_FK">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+    <End Role="Cartera_proveedores" Type="Self.Cartera_proveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="idProv" />
+      </Principal>
+      <Dependent Role="Cartera_proveedores">
+        <PropertyRef Name="idProv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Clases_Categorias_FK">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Clases" Type="Self.Clases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Clases">
+        <PropertyRef Name="idCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Componentes_producto_Articulos_FK">
+    <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+    <End Role="Componentes_producto" Type="Self.Componentes_producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulos">
+        <PropertyRef Name="idArt" />
+      </Principal>
+      <Dependent Role="Componentes_producto">
+        <PropertyRef Name="idArt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Componentes_producto_Producto_FK">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Componentes_producto" Type="Self.Componentes_producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idPro" />
+      </Principal>
+      <Dependent Role="Componentes_producto">
+        <PropertyRef Name="idPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Contacto_proveedor_Proveedores_FK">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+    <End Role="Contacto_proveedor" Type="Self.Contacto_proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="idProv" />
+      </Principal>
+      <Dependent Role="Contacto_proveedor">
+        <PropertyRef Name="idProv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DireccionesCliente_Usuarios_FK">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="DireccionesCliente" Type="Self.DireccionesCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsu" />
+      </Principal>
+      <Dependent Role="DireccionesCliente">
+        <PropertyRef Name="idUsu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Factura_desglosada_Factura_FK">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="Factura_desglosada" Type="Self.Factura_desglosada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="idFac" />
+      </Principal>
+      <Dependent Role="Factura_desglosada">
+        <PropertyRef Name="idFac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Factura_desglosada_Producto_FK">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Factura_desglosada" Type="Self.Factura_desglosada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idPro" />
+      </Principal>
+      <Dependent Role="Factura_desglosada">
+        <PropertyRef Name="idPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Factura_Usuarios_FK">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsu" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="idUsu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Favoritos_Producto_FK">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idPro" />
+      </Principal>
+      <Dependent Role="Favoritos">
+        <PropertyRef Name="idPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Favoritos_Usuarios_FK">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsu" />
+      </Principal>
+      <Dependent Role="Favoritos">
+        <PropertyRef Name="idUsu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Filtros_FiltrosCategoria_FK">
+    <End Role="FiltrosCategoria" Type="Self.FiltrosCategoria" Multiplicity="1" />
+    <End Role="Filtros" Type="Self.Filtros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FiltrosCategoria">
+        <PropertyRef Name="idFilCat" />
+      </Principal>
+      <Dependent Role="Filtros">
+        <PropertyRef Name="idFilCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FiltrosC_FiltrosClases_FK">
+    <End Role="FiltrosClases" Type="Self.FiltrosClases" Multiplicity="1" />
+    <End Role="FiltrosC" Type="Self.FiltrosC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FiltrosClases">
+        <PropertyRef Name="idFilCla" />
+      </Principal>
+      <Dependent Role="FiltrosC">
+        <PropertyRef Name="idFilCla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FiltrosCategoria_Categorias_FK">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="FiltrosCategoria" Type="Self.FiltrosCategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="FiltrosCategoria">
+        <PropertyRef Name="idCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FiltrosClases_Clases_FK">
+    <End Role="Clases" Type="Self.Clases" Multiplicity="1" />
+    <End Role="FiltrosClases" Type="Self.FiltrosClases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clases">
+        <PropertyRef Name="idCla" />
+      </Principal>
+      <Dependent Role="FiltrosClases">
+        <PropertyRef Name="idCla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Galeria_Producto_FK">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Galeria" Type="Self.Galeria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idPro" />
+      </Principal>
+      <Dependent Role="Galeria">
+        <PropertyRef Name="idPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Operaciones_Modulo_FK">
+    <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="idMod" />
+      </Principal>
+      <Dependent Role="Operaciones">
+        <PropertyRef Name="idMod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Producto_Categorias_FK">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="idCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Producto_Clases_FK">
+    <End Role="Clases" Type="Self.Clases" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clases">
+        <PropertyRef Name="idCla" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="idCla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Rol_operacion_Operaciones_FK">
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="1" />
+    <End Role="Rol_operacion" Type="Self.Rol_operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operaciones">
+        <PropertyRef Name="idOpe" />
+      </Principal>
+      <Dependent Role="Rol_operacion">
+        <PropertyRef Name="idOpe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Rol_operacion_Rol_FK">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Rol_operacion" Type="Self.Rol_operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Rol_operacion">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Usuarios_Rol_FK">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FloristeriaMillanModelStoreContainer">
+    <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carrito" EntityType="Self.Carrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cartera_proveedores" EntityType="Self.Cartera_proveedores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clases" EntityType="Self.Clases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Componentes_producto" EntityType="Self.Componentes_producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto_proveedor" EntityType="Self.Contacto_proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DireccionesCliente" EntityType="Self.DireccionesCliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura_desglosada" EntityType="Self.Factura_desglosada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favoritos" EntityType="Self.Favoritos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Filtros" EntityType="Self.Filtros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FiltrosC" EntityType="Self.FiltrosC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FiltrosCategoria" EntityType="Self.FiltrosCategoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FiltrosClases" EntityType="Self.FiltrosClases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Galeria" EntityType="Self.Galeria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operaciones" EntityType="Self.Operaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol_operacion" EntityType="Self.Rol_operacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Carrito_Producto_FK" Association="Self.Carrito_Producto_FK">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Carrito" EntitySet="Carrito" />
+    </AssociationSet>
+    <AssociationSet Name="Carrito_Usuarios_FK" Association="Self.Carrito_Usuarios_FK">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Carrito" EntitySet="Carrito" />
+    </AssociationSet>
+    <AssociationSet Name="Cartera_proveedores_Articulos_FK" Association="Self.Cartera_proveedores_Articulos_FK">
+      <End Role="Articulos" EntitySet="Articulos" />
+      <End Role="Cartera_proveedores" EntitySet="Cartera_proveedores" />
+    </AssociationSet>
+    <AssociationSet Name="Cartera_proveedores_Producto_FK" Association="Self.Cartera_proveedores_Producto_FK">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Cartera_proveedores" EntitySet="Cartera_proveedores" />
+    </AssociationSet>
+    <AssociationSet Name="Clases_Categorias_FK" Association="Self.Clases_Categorias_FK">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Clases" EntitySet="Clases" />
+    </AssociationSet>
+    <AssociationSet Name="Componentes_producto_Articulos_FK" Association="Self.Componentes_producto_Articulos_FK">
+      <End Role="Articulos" EntitySet="Articulos" />
+      <End Role="Componentes_producto" EntitySet="Componentes_producto" />
+    </AssociationSet>
+    <AssociationSet Name="Componentes_producto_Producto_FK" Association="Self.Componentes_producto_Producto_FK">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Componentes_producto" EntitySet="Componentes_producto" />
+    </AssociationSet>
+    <AssociationSet Name="Contacto_proveedor_Proveedores_FK" Association="Self.Contacto_proveedor_Proveedores_FK">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Contacto_proveedor" EntitySet="Contacto_proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="DireccionesCliente_Usuarios_FK" Association="Self.DireccionesCliente_Usuarios_FK">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="DireccionesCliente" EntitySet="DireccionesCliente" />
+    </AssociationSet>
+    <AssociationSet Name="Factura_desglosada_Factura_FK" Association="Self.Factura_desglosada_Factura_FK">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="Factura_desglosada" EntitySet="Factura_desglosada" />
+    </AssociationSet>
+    <AssociationSet Name="Factura_desglosada_Producto_FK" Association="Self.Factura_desglosada_Producto_FK">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Factura_desglosada" EntitySet="Factura_desglosada" />
+    </AssociationSet>
+    <AssociationSet Name="Factura_Usuarios_FK" Association="Self.Factura_Usuarios_FK">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="Favoritos_Producto_FK" Association="Self.Favoritos_Producto_FK">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Favoritos" EntitySet="Favoritos" />
+    </AssociationSet>
+    <AssociationSet Name="Favoritos_Usuarios_FK" Association="Self.Favoritos_Usuarios_FK">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Favoritos" EntitySet="Favoritos" />
+    </AssociationSet>
+    <AssociationSet Name="Filtros_FiltrosCategoria_FK" Association="Self.Filtros_FiltrosCategoria_FK">
+      <End Role="FiltrosCategoria" EntitySet="FiltrosCategoria" />
+      <End Role="Filtros" EntitySet="Filtros" />
+    </AssociationSet>
+    <AssociationSet Name="FiltrosC_FiltrosClases_FK" Association="Self.FiltrosC_FiltrosClases_FK">
+      <End Role="FiltrosClases" EntitySet="FiltrosClases" />
+      <End Role="FiltrosC" EntitySet="FiltrosC" />
+    </AssociationSet>
+    <AssociationSet Name="FiltrosCategoria_Categorias_FK" Association="Self.FiltrosCategoria_Categorias_FK">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="FiltrosCategoria" EntitySet="FiltrosCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FiltrosClases_Clases_FK" Association="Self.FiltrosClases_Clases_FK">
+      <End Role="Clases" EntitySet="Clases" />
+      <End Role="FiltrosClases" EntitySet="FiltrosClases" />
+    </AssociationSet>
+    <AssociationSet Name="Galeria_Producto_FK" Association="Self.Galeria_Producto_FK">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Galeria" EntitySet="Galeria" />
+    </AssociationSet>
+    <AssociationSet Name="Operaciones_Modulo_FK" Association="Self.Operaciones_Modulo_FK">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="Operaciones" EntitySet="Operaciones" />
+    </AssociationSet>
+    <AssociationSet Name="Producto_Categorias_FK" Association="Self.Producto_Categorias_FK">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Producto_Clases_FK" Association="Self.Producto_Clases_FK">
+      <End Role="Clases" EntitySet="Clases" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Rol_operacion_Operaciones_FK" Association="Self.Rol_operacion_Operaciones_FK">
+      <End Role="Operaciones" EntitySet="Operaciones" />
+      <End Role="Rol_operacion" EntitySet="Rol_operacion" />
+    </AssociationSet>
+    <AssociationSet Name="Rol_operacion_Rol_FK" Association="Self.Rol_operacion_Rol_FK">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Rol_operacion" EntitySet="Rol_operacion" />
+    </AssociationSet>
+    <AssociationSet Name="Usuarios_Rol_FK" Association="Self.Usuarios_Rol_FK">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

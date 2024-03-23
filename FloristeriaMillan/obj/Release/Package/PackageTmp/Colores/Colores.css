@@ -1,0 +1,19 @@
+/*variables de color*/
+
+:root {
+    --color-primario: #bea267;
+    --color-fondo-claro: #f0efed;
+    --color-primario-claro: #bea26799;
+    --color-primario-brillo: #f3e700;
+    --color-secundario: #000000;
+    --color-texto-primario: #bea267;
+    --color-texto-secundario: #232323;
+    --color-placeholder-texto: #606060;
+    --color-fondo-texto: #ffffff;
+    --color-fondo-formularios1: #2d2c26;
+    --color-fondo-formularios2: #787878;
+    --color-borde-texto: #7a7a7a;
+    --color-primario-botones: #bea267;
+    --color-secundario-botones: #D3C4A3;
+    --color-texto-botones: #232323;
+}

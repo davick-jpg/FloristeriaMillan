@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FloristeriaMillanModelStoreContainer" CdmEntityContainer="FloristeriaMillanEntities2">
+    <EntitySetMapping Name="Articulos">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Articulos">
+        <MappingFragment StoreEntitySet="Articulos">
+          <ScalarProperty Name="idArt" ColumnName="idArt" />
+          <ScalarProperty Name="precioArt" ColumnName="precioArt" />
+          <ScalarProperty Name="nombreArt" ColumnName="nombreArt" />
+          <ScalarProperty Name="descripcionArt" ColumnName="descripcionArt" />
+          <ScalarProperty Name="precioDistribuidorArt" ColumnName="precioDistribuidorArt" />
+          <ScalarProperty Name="precioComercialArt" ColumnName="precioComercialArt" />
+          <ScalarProperty Name="stockMinimoArt" ColumnName="stockMinimoArt" />
+          <ScalarProperty Name="stockArt" ColumnName="stockArt" />
+          <ScalarProperty Name="fotoArt" ColumnName="fotoArt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carrito">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Carrito">
+        <MappingFragment StoreEntitySet="Carrito">
+          <ScalarProperty Name="idCar" ColumnName="idCar" />
+          <ScalarProperty Name="idUsu" ColumnName="idUsu" />
+          <ScalarProperty Name="idPro" ColumnName="idPro" />
+          <ScalarProperty Name="DescripcionCar" ColumnName="DescripcionCar" />
+          <ScalarProperty Name="cantidadCar" ColumnName="cantidadCar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cartera_proveedores">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Cartera_proveedores">
+        <MappingFragment StoreEntitySet="Cartera_proveedores">
+          <ScalarProperty Name="idCar" ColumnName="idCar" />
+          <ScalarProperty Name="idArt" ColumnName="idArt" />
+          <ScalarProperty Name="idProv" ColumnName="idProv" />
+          <ScalarProperty Name="temporadaCar" ColumnName="temporadaCar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Categorias">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="nombreCat" ColumnName="nombreCat" />
+          <ScalarProperty Name="descripcionCat" ColumnName="descripcionCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clases">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Clases">
+        <MappingFragment StoreEntitySet="Clases">
+          <ScalarProperty Name="idCla" ColumnName="idCla" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="nombreCla" ColumnName="nombreCla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Componentes_producto">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Componentes_producto">
+        <MappingFragment StoreEntitySet="Componentes_producto">
+          <ScalarProperty Name="idComPro" ColumnName="idComPro" />
+          <ScalarProperty Name="idArt" ColumnName="idArt" />
+          <ScalarProperty Name="idPro" ColumnName="idPro" />
+          <ScalarProperty Name="cantidadComPro" ColumnName="cantidadComPro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacto_proveedor">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Contacto_proveedor">
+        <MappingFragment StoreEntitySet="Contacto_proveedor">
+          <ScalarProperty Name="idProvCon" ColumnName="idProvCon" />
+          <ScalarProperty Name="idProv" ColumnName="idProv" />
+          <ScalarProperty Name="nombreCon" ColumnName="nombreCon" />
+          <ScalarProperty Name="telefonoCon" ColumnName="telefonoCon" />
+          <ScalarProperty Name="emailCon" ColumnName="emailCon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DireccionesCliente">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.DireccionesCliente">
+        <MappingFragment StoreEntitySet="DireccionesCliente">
+          <ScalarProperty Name="idDir" ColumnName="idDir" />
+          <ScalarProperty Name="idUsu" ColumnName="idUsu" />
+          <ScalarProperty Name="nombreDir" ColumnName="nombreDir" />
+          <ScalarProperty Name="direccionDir" ColumnName="direccionDir" />
+          <ScalarProperty Name="calleDir" ColumnName="calleDir" />
+          <ScalarProperty Name="coloniaDir" ColumnName="coloniaDir" />
+          <ScalarProperty Name="municipioDir" ColumnName="municipioDir" />
+          <ScalarProperty Name="codigoPostalCli" ColumnName="codigoPostalCli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factura">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="idFac" ColumnName="idFac" />
+          <ScalarProperty Name="idUsu" ColumnName="idUsu" />
+          <ScalarProperty Name="fechaEntregaFac" ColumnName="fechaEntregaFac" />
+          <ScalarProperty Name="totalFac" ColumnName="totalFac" />
+          <ScalarProperty Name="direccionEntregaFac" ColumnName="direccionEntregaFac" />
+          <ScalarProperty Name="metodoPagoFac" ColumnName="metodoPagoFac" />
+          <ScalarProperty Name="estatusFac" ColumnName="estatusFac" />
+          <ScalarProperty Name="dedicatoriaFac" ColumnName="dedicatoriaFac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factura_desglosada">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Factura_desglosada">
+        <MappingFragment StoreEntitySet="Factura_desglosada">
+          <ScalarProperty Name="idFacDes" ColumnName="idFacDes" />
+          <ScalarProperty Name="idFac" ColumnName="idFac" />
+          <ScalarProperty Name="idPro" ColumnName="idPro" />
+          <ScalarProperty Name="cantidadProductoFacDes" ColumnName="cantidadProductoFacDes" />
+          <ScalarProperty Name="totalParcialFacDes" ColumnName="totalParcialFacDes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favoritos">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Favoritos">
+        <MappingFragment StoreEntitySet="Favoritos">
+          <ScalarProperty Name="idFav" ColumnName="idFav" />
+          <ScalarProperty Name="idPro" ColumnName="idPro" />
+          <ScalarProperty Name="idUsu" ColumnName="idUsu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Filtros">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Filtros">
+        <MappingFragment StoreEntitySet="Filtros">
+          <ScalarProperty Name="idFil" ColumnName="idFil" />
+          <ScalarProperty Name="idFilCat" ColumnName="idFilCat" />
+          <ScalarProperty Name="filtro" ColumnName="filtro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FiltrosC">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.FiltrosC">
+        <MappingFragment StoreEntitySet="FiltrosC">
+          <ScalarProperty Name="idFilC" ColumnName="idFilC" />
+          <ScalarProperty Name="idFilCla" ColumnName="idFilCla" />
+          <ScalarProperty Name="filtro" ColumnName="filtro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FiltrosCategoria">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.FiltrosCategoria">
+        <MappingFragment StoreEntitySet="FiltrosCategoria">
+          <ScalarProperty Name="idFilCat" ColumnName="idFilCat" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="nombreFiltroCat" ColumnName="nombreFiltroCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FiltrosClases">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.FiltrosClases">
+        <MappingFragment StoreEntitySet="FiltrosClases">
+          <ScalarProperty Name="idFilCla" ColumnName="idFilCla" />
+          <ScalarProperty Name="idCla" ColumnName="idCla" />
+          <ScalarProperty Name="nombreFiltroCla" ColumnName="nombreFiltroCla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galeria">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Galeria">
+        <MappingFragment StoreEntitySet="Galeria">
+          <ScalarProperty Name="idGal" ColumnName="idGal" />
+          <ScalarProperty Name="idPro" ColumnName="idPro" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modulo">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Modulo">
+        <MappingFragment StoreEntitySet="Modulo">
+          <ScalarProperty Name="idMod" ColumnName="idMod" />
+          <ScalarProperty Name="nombreMod" ColumnName="nombreMod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operaciones">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Operaciones">
+        <MappingFragment StoreEntitySet="Operaciones">
+          <ScalarProperty Name="idOpe" ColumnName="idOpe" />
+          <ScalarProperty Name="nombreOpe" ColumnName="nombreOpe" />
+          <ScalarProperty Name="idMod" ColumnName="idMod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="idPro" ColumnName="idPro" />
+          <ScalarProperty Name="fotoPro" ColumnName="fotoPro" />
+          <ScalarProperty Name="nombrePro" ColumnName="nombrePro" />
+          <ScalarProperty Name="descripcionPro" ColumnName="descripcionPro" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="idCla" ColumnName="idCla" />
+          <ScalarProperty Name="precioPro" ColumnName="precioPro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Proveedores">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="idProv" ColumnName="idProv" />
+          <ScalarProperty Name="nombreEmpresaProv" ColumnName="nombreEmpresaProv" />
+          <ScalarProperty Name="direccionEmpresaProv" ColumnName="direccionEmpresaProv" />
+          <ScalarProperty Name="telefonoEmpresaProv" ColumnName="telefonoEmpresaProv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombreRol" ColumnName="nombreRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol_operacion">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Rol_operacion">
+        <MappingFragment StoreEntitySet="Rol_operacion">
+          <ScalarProperty Name="idRolOpe" ColumnName="idRolOpe" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="idOpe" ColumnName="idOpe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="FloristeriaMillanModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="idUsu" ColumnName="idUsu" />
+          <ScalarProperty Name="nombreCli" ColumnName="nombreCli" />
+          <ScalarProperty Name="emailCli" ColumnName="emailCli" />
+          <ScalarProperty Name="passwordCli" ColumnName="passwordCli" />
+          <ScalarProperty Name="telefonoCli" ColumnName="telefonoCli" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="calleCli" ColumnName="calleCli" />
+          <ScalarProperty Name="coloniaCli" ColumnName="coloniaCli" />
+          <ScalarProperty Name="municipioCli" ColumnName="municipioCli" />
+          <ScalarProperty Name="codigoPostalCli" ColumnName="codigoPostalCli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

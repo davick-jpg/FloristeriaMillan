@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Sucess";
+    Layout = "~/Views/Shared/PlantillaUsuario/_PlantillaUsuario.cshtml";
+}
+
+<div class="contenedor-sucess">
+    <div class="contenedor-titulo">
+        ¡Listo!
+    </div>
+    <div class="contenedor-subtitulo">
+        Gracias por tu compra
+    </div>
+    <div class="contenedor-mensaje">
+        EL proceso casi ha finalizado, te llegara un correo con la información relacionada con el proceso de envió.
+
+        Si tienes alguna duda puedes contactarnos por estos medios:
+    </div>
+    <div class="contenedor-redes">
+        <button type="button" class="boton-logo-red" onclick="ir_a('https://www.facebook.com/profile.php?id=100053337534003')">
+            <span class="ri-facebook-fill"></span>
+        </button>
+        <button type="button" class="boton-logo-red" onclick="ir_a('https://www.instagram.com/millanfloristeria/')">
+            <span class="ri-instagram-line"></span>
+        </button>
+    </div>
+    <button class="salir" type="button" onclick="ir_a('/HomePrincipal/Index')">
+        Regresar
+    </button>
+</div>
+

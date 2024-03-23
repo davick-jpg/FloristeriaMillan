@@ -1,0 +1,414 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion principal */
+
+header {
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    background: var(--color-secundario);
+    z-index: 35;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    justify-content: space-evenly;
+}
+
+    header .header-logo {
+        height: 90%;
+        background: transparent;
+        border: transparent;
+        aspect-ratio: 1/1;
+    }
+
+        header .header-logo .navbar-brand {
+            height: 100%;
+            width: 100%;
+        }
+
+    header .buscador {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    header .grande {
+        width: 90% !important;
+    }
+
+    header .buscador .busqueda {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        header .buscador .busqueda input {
+            width: 70%;
+            height: 100%;
+            font-size: 1rem;
+            background: var(--color-fondo-formularios1);
+            border: 1px solid var(--color-primario);
+            border-right: transparent;
+            border-radius: 5px 0px 0px 5px;
+            padding-left: 10px;
+            color: var(--color-primario);
+        }
+
+            header .buscador .busqueda input:hover {
+                outline: none;
+            }
+
+            header .buscador .busqueda input::placeholder {
+                color: var(--color-primario);
+            }
+
+        header .buscador .busqueda .divisor {
+            height: 100%;
+            width: 1%;
+            max-width: 2px;
+            background: var(--color-primario-claro);
+        }
+
+        header .buscador .busqueda button {
+            width: 29%;
+            max-width: 40px;
+            height: 100%;
+            background: var(--color-fondo-formularios1);
+            border-top: 1px solid var(--color-primario);
+            border-right: 1px solid var(--color-primario);
+            border-bottom: 1px solid var(--color-primario);
+            border-radius: 0px 5px 5px 0px;
+            display: flex;
+            border-left: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+            header .buscador .busqueda button:hover > span {
+                color: var(--color-primario);
+            }
+
+            header .buscador .busqueda button span {
+                color: var(--color-primario-claro);
+            }
+
+    header .buscador .sugerencias {
+        position: absolute;
+        top: 40px;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        width: 75%;
+        max-height: 300px;
+        overflow: scroll;
+        background: rgba(190, 162, 103, .8);
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 2px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 0px 0px 10px 10px;
+        display: none;
+    }
+
+        header .buscador .sugerencias::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        header .buscador .sugerencias::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        header .buscador .sugerencias::-webkit-scrollbar:horizontal {
+            height: 0px;
+        }
+
+        header .buscador .sugerencias::-webkit-scrollbar:vertical {
+            width: 2px;
+        }
+
+        header .buscador .sugerencias::-webkit-scrollbar-thumb {
+            background-color: var(--color-primario);
+            border-radius: 2px;
+            border: 2px solid var(--color-primario);
+        }
+
+        header .buscador .sugerencias::-webkit-scrollbar-track {
+            border-radius: 2px;
+        }
+
+        header .buscador .sugerencias .sugerencia {
+            width: 100%;
+            height: 35px;
+            display: flex;
+            align-items: center;
+        }
+
+            header .buscador .sugerencias .sugerencia button {
+                width: 100%;
+                background: transparent;
+                border: transparent;
+                color: var(--color-secundario);
+                font-size: 1rem;
+                text-align: left;
+                padding: 1%;
+            }
+
+                header .buscador .sugerencias .sugerencia button:hover {
+                    background: var(--color-secundario);
+                    color: var(--color-primario);
+                    transform: translateY(-1px);
+                    border-radius: 10px;
+                }
+
+                header .buscador .sugerencias .sugerencia button label {
+                    cursor: pointer;
+                }
+
+        header .buscador .sugerencias .divisor {
+            width: 98%;
+            height: 2px;
+            display: flex;
+            background: var(--color-secundario);
+            opacity: .4;
+            margin: 2px 0px 3px 0px;
+        }
+
+    header .menu-usuario {
+        width: 27%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 270px;
+        max-width: 450px;
+        justify-content: center;
+    }
+
+        header .menu-usuario .boton-desplegar {
+            display: none;
+            background: transparent;
+            border: transparent;
+        }
+
+        header .menu-usuario .boton-contraer {
+            display: none;
+        }
+
+        header .menu-usuario .boton-desplegar span {
+            color: var(--color-primario);
+        }
+
+        header .menu-usuario .menu {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+            header .menu-usuario .menu .boton-menu {
+                width: 20%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: transparent;
+                border: transparent;
+            }
+
+                header .menu-usuario .menu .boton-menu:hover > span,
+                header .menu-usuario .menu .boton-menu:hover > label {
+                    color: var(--color-primario);
+                    transform: translateY(-3px);
+                }
+
+                header .menu-usuario .menu .boton-menu span {
+                    color: var(--color-primario-claro);
+                    cursor: pointer;
+                }
+
+                header .menu-usuario .menu .boton-menu label {
+                    color: var(--color-primario-claro);
+                    cursor: pointer;
+                }
+
+            header .menu-usuario .menu .clicked {
+                transform: scale(1.2);
+                color: var(--color-primario);
+            }
+
+                header .menu-usuario .menu .clicked span {
+                    color: var(--color-primario);
+                }
+
+                header .menu-usuario .menu .clicked label {
+                    color: var(--color-primario);
+                }
+
+            header .menu-usuario .menu .divisor {
+            }
+
+    header .titulo-despegable {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 40px;
+        border-radius: 11px 0px 0px 0px;
+        background: var(--color-secundario);
+        display: none;
+    }
+
+        header .titulo-despegable span {
+            color: var(--color-primario);
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        header .titulo-despegable label {
+            color: var(--color-primario);
+        }
+
+@media(max-width:1200px) {
+    header .buscador {
+        width: 55%;
+    }
+
+    header .menu-usuario {
+        width: 30%;
+    }
+}
+
+@media (max-width:750px) {
+    header {
+        padding: 0;
+    }
+
+        header .menu-usuario {
+            width: 20%;
+            min-width: 20%;
+        }
+
+        header .buscador {
+            width: 70%;
+        }
+
+        header .menu-usuario .boton-desplegar {
+            display: flex;
+        }
+
+        header .menu-usuario .boton-contraer {
+            z-index: 40;
+            position: absolute;
+            top: 7px;
+            right: 6px;
+            border: 2px solid var(--color-primario);
+            background: transparent;
+            border-radius: 20px;
+            width: auto;
+            padding: 1px;
+        }
+
+            header .menu-usuario .boton-contraer span {
+                color: var(--color-primario);
+            }
+
+        header .menu-usuario .menu {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 250px;
+            height: 100vh;
+            flex-direction: column;
+            background: var(--color-fondo-formularios1);
+            border-radius: 15px 0px 0px 15px;
+            border: 2px solid var( --color-secundario);
+            justify-content: start;
+            display: none;
+        }
+
+            header .menu-usuario .menu .boton-menu {
+                flex-direction: row;
+                justify-content: left;
+                width: 96%;
+                height: 40px;
+                margin-top: 10px;
+                background: var(--color-primario);
+                border: 2px solid var( --color-secundario);
+                border-radius: 10px;
+                padding: 5px;
+                margin-right: 2%;
+                margin-left: 2%;
+            }
+
+                header .menu-usuario .menu .boton-menu span {
+                    width: auto;
+                    margin-right: 10px;
+                    color: var(--color-secundario);
+                    opacity: .7;
+                }
+
+                header .menu-usuario .menu .boton-menu .divisor {
+                    height: 80%;
+                    width: 2px;
+                    background: var(--color-secundario);
+                }
+
+                header .menu-usuario .menu .boton-menu label {
+                    width: 68%;
+                    text-align: left;
+                    padding-left: 10px;
+                    text-decoration: underline;
+                    color: var(--color-secundario);
+                    font-size: 1rem;
+                }
+}
+
+/* configuracion secundario */
+
+header .titulo-pagina {
+    color: var(--color-primario);
+    font-size: 3rem;
+}
+
+header .menu-user .usuario {
+    color: var(--color-primario);
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+header .menu-user .boton-sesion {
+    border: 2px solid var(--color-primario);
+    background: var(--color-fondo-formularios1);
+    border-radius: 10px;
+    height: 30px;
+    font-size: 1rem;
+    color: var(--color-primario);
+}
+
+    header .menu-user .boton-sesion:hover {
+        background: var(--color-secundario);
+        border: 2px solid var(--color-primario);
+        color: var(--color-primario);
+        box-shadow: 1px 1px 5px var(--color-primario);
+        transform: translateY(-3px);
+    }
+
+    header .menu-user .boton-sesion label {
+        cursor: pointer;
+    }
+
+@media (max-width:400px) {
+    header .titulo-pagina {
+        font-size: 2rem;
+    }
+}

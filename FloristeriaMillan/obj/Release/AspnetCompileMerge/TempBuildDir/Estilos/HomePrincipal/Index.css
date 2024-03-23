@@ -1,0 +1,734 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+main .divisor {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    height: 3px;
+    background: var(--color-primario);
+    opacity: .6;
+    margin-bottom: 30px;
+}
+
+/* configuracion banner index */
+
+main .banner-fijo-index {
+    width: 100%;
+    background: var(--color-secundario);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    main .banner-fijo-index img {
+        width: 30%;
+        height: auto;
+    }
+
+main .contenido-banner-fijo-index {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 15px;
+    margin-top: 30px;
+}
+
+    main .contenido-banner-fijo-index .titulo-banner-fijo-index {
+        color: var(--color-primario);
+        font-size: 5rem;
+    }
+
+    main .contenido-banner-fijo-index .subtitulo-banner-fijo-index {
+        color: var(--color-primario-claro);
+        font-size: 1.2rem;
+    }
+
+    main .contenido-banner-fijo-index .boton-banner-fijo-index {
+        width: 20%;
+        height: 30px;
+        background: transparent;
+        border: 1px solid var(--color-primario);
+        color: var(--color-primario);
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-left: 80%;
+        transition: 0.2s ease-in-out;
+    }
+
+        main .contenido-banner-fijo-index .boton-banner-fijo-index:hover {
+            box-shadow: rgb(255 255 255 / 24%) 4px 4px 3px 0px;
+            background: var(--color-fondo-formularios1);
+            transform: translateY(-5px);
+        }
+
+@media(min-width:1001px) {
+    main .banner-fijo-index img {
+        width: 290px;
+        height: auto;
+    }
+
+    main .contenido-banner-fijo-index {
+        width: 60%;
+    }
+}
+
+@media(max-width:1000px) {
+    main .contenido-banner-fijo-index .titulo-banner-fijo-index {
+        color: var(--color-primario);
+        font-size: 4rem;
+    }
+
+    main .contenido-banner-fijo-index .subtitulo-banner-fijo-index {
+        color: var(--color-primario-claro);
+        font-size: 1.2rem;
+    }
+}
+
+@media(max-width:850px) {
+    main .contenido-banner-fijo-index {
+        z-index: 10;
+    }
+
+        main .contenido-banner-fijo-index .titulo-banner-fijo-index {
+            color: var(--color-primario);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        main .contenido-banner-fijo-index .subtitulo-banner-fijo-index {
+            color: var(--color-primario);
+            font-size: .8rem;
+            font-weight: 1000;
+        }
+
+        main .contenido-banner-fijo-index .boton-banner-fijo-index {
+            width: 28%;
+            height: 30px;
+            margin-left: 70%;
+        }
+
+    main .banner-fijo-index img {
+        width: 350px;
+        height: 350px;
+        position: absolute;
+        left: -90px;
+        top: 140px;
+        opacity: .4;
+        z-index: 0;
+    }
+
+    main .banner-fijo-index {
+        overflow: hidden;
+    }
+}
+
+/* configuracion servicios */
+
+main .contenedor-servicios {
+    width: 100%;
+    height: auto;
+}
+
+main .contenedor-servicios {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 30px 0px 30px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+    row-gap: 30px;
+    column-gap: 20px;
+}
+
+main .item-servicio {
+    border: 3px solid var(--color-primario);
+    border-radius: 10px;
+    width: 200px;
+    height: 230px;
+    box-shadow: #000 1px 1px 10px 0px;
+    background: var(--color-fondo-formularios1);
+    color: var(--color-primario);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    main .item-servicio span {
+        position: absolute;
+        font-size: 12rem;
+        opacity: 0.2;
+    }
+
+    main .item-servicio .contenedor-titulo-item-servicio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+        main .item-servicio .contenedor-titulo-item-servicio .titulo-item-servicio {
+            font-size: 1rem;
+        }
+
+        main .item-servicio .contenedor-titulo-item-servicio .subtitulo-item-servicio {
+            font-size: .8rem;
+            width: 90%;
+            text-align: center;
+            margin-top: 9px;
+        }
+
+main i {
+    text-align: center;
+    color: var(--color-primario);
+    background: var(--color-primario);
+    width: 90%;
+    height: 2px;
+}
+
+/* condiguracion productos recomendados */
+
+main .carrusel-productos-recomendados > div {
+    visibility: hidden;
+    position: absolute;
+}
+
+@media(min-width:1101px) {
+    main .carrusel-productos-recomendados > *:nth-child(-n+4) {
+        visibility: visible;
+        position: relative;
+    }
+}
+
+@media(max-width:1100px) {
+    main .carrusel-productos-recomendados > *:nth-child(-n+2) {
+        visibility: visible;
+        position: relative;
+    }
+}
+
+main .contenedor-productos-recomendados {
+    margin-bottom: 30px;
+}
+
+main .contenedor-carrusel-productos-recomendados {
+    width: 90%;
+    margin-left: 5%;
+}
+
+main .carrusel-productos-recomendados {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    overflow: auto;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    main .carrusel-productos-recomendados::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    main .carrusel-productos-recomendados::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    main .carrusel-productos-recomendados::-webkit-scrollbar:horizontal {
+        height: 6px;
+        width: 30px;
+    }
+
+    main .carrusel-productos-recomendados::-webkit-scrollbar:vertical {
+        width: 0px;
+    }
+
+    main .carrusel-productos-recomendados::-webkit-scrollbar-thumb {
+        background-color: var(--color-primario);
+        border-radius: 2px;
+        border: 2px solid var(--color-primario);
+    }
+
+    main .carrusel-productos-recomendados::-webkit-scrollbar-track {
+        border-radius: 2px;
+    }
+
+main .contenedor-titulos-productos-recomendados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primario);
+}
+
+main .titulo-productos-recomendados {
+    font-size: 2rem;
+}
+
+main .subtitulo-productos-recomendados {
+    font-size: 1.2rem;
+    color: var(--color-secundario);
+    margin-bottom: 5px;
+    opacity: .7;
+    text-align: center;
+    width: 80%;
+}
+
+/* configuracion banner promociones */
+
+main .contenedor-banner-promociones {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+}
+
+    main .contenedor-banner-promociones .carrusel-banner-promociones {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+        main .contenedor-banner-promociones .carrusel-banner-promociones button {
+        }
+
+        main .contenedor-banner-promociones .carrusel-banner-promociones .contenedor_promocion {
+            width: 100%;
+            height: 100%;
+        }
+
+        main .contenedor-banner-promociones .carrusel-banner-promociones > div {
+            visibility: hidden;
+            position: absolute;
+        }
+
+        main .contenedor-banner-promociones .carrusel-banner-promociones .contenedor_promocion img {
+            width: 100%;
+            height: 100%;
+        }
+
+        main .contenedor-banner-promociones .carrusel-banner-promociones > *:nth-child(2) {
+            visibility: visible;
+            position: relative;
+        }
+
+/* configuracion productos novedad */
+
+
+main .carrusel-productos-novedad > div {
+    visibility: hidden;
+    position: absolute;
+}
+
+@media(min-width:1101px) {
+    main .carrusel-productos-novedad > *:nth-child(-n+4) {
+        visibility: visible;
+        position: relative;
+    }
+}
+
+@media(max-width:1100px) {
+    main .carrusel-productos-novedad > *:nth-child(-n+2) {
+        visibility: visible;
+        position: relative;
+    }
+}
+
+main .contenedor-productos-novedad {
+    margin-bottom: 30px;
+}
+
+main .contenedor-carrusel-productos-novedad {
+    width: 90%;
+    margin-left: 5%;
+}
+
+main .carrusel-productos-novedad {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    overflow: auto;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    main .carrusel-productos-novedad::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    main .carrusel-productos-novedad::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    main .carrusel-productos-novedad::-webkit-scrollbar:horizontal {
+        height: 6px;
+        width: 30px;
+    }
+
+    main .carrusel-productos-novedad::-webkit-scrollbar:vertical {
+        width: 0px;
+    }
+
+    main .carrusel-productos-novedad::-webkit-scrollbar-thumb {
+        background-color: var(--color-primario);
+        border-radius: 2px;
+        border: 2px solid var(--color-primario);
+    }
+
+    main .carrusel-productos-novedad::-webkit-scrollbar-track {
+        border-radius: 2px;
+    }
+
+main .contenedor-titulos-productos-novedad {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primario);
+}
+
+main .titulo-productos-novedad {
+    font-size: 2rem;
+    text-align: center;
+}
+
+main .subtitulo-productos-novedad {
+    font-size: 1.2rem;
+    color: var(--color-secundario);
+    margin-bottom: 5px;
+    opacity: .7;
+    width: 80%;
+    text-align: center;
+}
+
+/* configuracion conenedor navegacion */
+
+main .contenedor-navegacion {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 90%;
+    margin-left: 5%;
+    height: auto;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+    row-gap: 15px;
+}
+
+@media(min-width:1101px) {
+    main .contenedor-navegacion > *:nth-child(2), main .contenedor-navegacion > *:nth-child(3) {
+        width: 60%;
+        height: 270px;
+        border-radius: 15px;
+        border: 3px solid var(--color-secundario);
+        background: var(--color-fondo-formularios1);
+        padding: 5px;
+        position: relative;
+        box-shadow: 4px 4px 10px rgba(0,0,0);
+    }
+
+    main .contenedor-navegacion > *:nth-child(1), main .contenedor-navegacion > *:nth-child(4) {
+        width: 30%;
+        height: 270px;
+        border-radius: 15px;
+        border: 3px solid var(--color-primario);
+        padding: 5px;
+        background: var(--color-secundario);
+        box-shadow: 4px 4px 10px rgba(0,0,0);
+        position: relative;
+    }
+}
+
+@media(max-width:1100px) {
+    main .contenedor-navegacion > *:nth-child(2), main .contenedor-navegacion > *:nth-child(3) {
+        width: 90%;
+        height: 270px;
+        border-radius: 15px;
+        border: 3px solid var(--color-primario);
+        background: var(--color-fondo-formularios1);
+        padding: 5px;
+        position: relative;
+        margin-bottom: 15px;
+        box-shadow: 4px 4px 10px rgba(0,0,0);
+    }
+
+    main .contenedor-navegacion > *:nth-child(1), main .contenedor-navegacion > *:nth-child(4) {
+        width: 90%;
+        height: 270px;
+        border-radius: 15px;
+        border: 3px solid var(--color-primario);
+        padding: 5px;
+        background: var(--color-secundario);
+        box-shadow: 4px 4px 10px rgba(0,0,0);
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    main .contenedor-navegacion div:nth-child(1), main .contenedor-navegacion div:nth-child(3) {
+        background: var(--color-secundario);
+    }
+
+    main .contenedor-navegacion div:nth-child(2), main .contenedor-navegacion div:nth-child(4) {
+        background: var(--color-fondo-formularios1);
+    }
+
+        main .contenedor-navegacion div:nth-child(2) > img, main .contenedor-navegacion div:nth-child(3) > img {
+            z-index: 0;
+            opacity: .6;
+        }
+
+    main .contenedor-categoria label {
+        z-index: 5;
+        position: relative;
+        margin-left: 200px;
+        margin-right: 10px;
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        padding-right: 10px;
+        left: 30px !important;
+    }
+
+    main .contenedor-navegacion div:nth-child(1) > button, main .contenedor-navegacion div:nth-child(4) > button {
+        width: 20% !important;
+    }
+}
+
+@media(max-width:800px) {
+    main .contenedor-navegacion > *:nth-child(2), main .contenedor-navegacion > *:nth-child(3) {
+        width: 97%;
+        height: 270px;
+        border-radius: 15px;
+        border: 3px solid var(--color-primario);
+        background: var(--color-fondo-formularios1);
+        padding: 5px;
+        position: relative;
+        margin-bottom: 15px;
+        box-shadow: 4px 4px 10px rgba(0,0,0);
+    }
+
+    main .contenedor-navegacion > *:nth-child(1), main .contenedor-navegacion > *:nth-child(4) {
+        width: 97%;
+        height: 270px;
+        border-radius: 15px;
+        border: 3px solid var(--color-primario);
+        padding: 5px;
+        background: var(--color-secundario);
+        box-shadow: 4px 4px 10px rgba(0,0,0);
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    main .contenedor-navegacion div:nth-child(1), main .contenedor-navegacion div:nth-child(3) {
+        background: var(--color-secundario);
+    }
+
+    main .contenedor-navegacion div:nth-child(2), main .contenedor-navegacion div:nth-child(4) {
+        background: var(--color-fondo-formularios1);
+    }
+
+        main .contenedor-navegacion div:nth-child(2) > img, main .contenedor-navegacion div:nth-child(3) > img {
+            z-index: 0;
+            opacity: .6;
+        }
+
+    main .contenedor-categoria label {
+        z-index: 5;
+        position: relative;
+        margin-left: 150px;
+        margin-right: 10px;
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        padding-right: 10px;
+        margin-left: 70px !important;
+    }
+
+    main .contenedor-navegacion div:nth-child(1) > button, main .contenedor-navegacion div:nth-child(4) > button {
+        width: 30% !important;
+    }
+
+    main .contenedor-navegacion div:nth-child(2) > button, main .contenedor-navegacion div:nth-child(3) > button {
+        width: 30% !important;
+    }
+}
+
+main .contenedor-navegacion div:nth-child(2) > label, main .contenedor-navegacion div:nth-child(3) > label {
+    font-size: 1.2rem;
+    height: 146px;
+    overflow: auto;
+    color: var(--color-primario);
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    left: 250px;
+    z-index: 5;
+    margin-right: 10px;
+}
+
+main .contenedor-navegacion div:nth-child(2) > button, main .contenedor-navegacion div:nth-child(3) > button {
+    background: var(--color-secundario);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    width: 20%;
+    height: 30px;
+    border-radius: 15px;
+    z-index: 5;
+}
+
+    main .contenedor-navegacion div:nth-child(2) > button label, main .contenedor-navegacion div:nth-child(3) > button label {
+        margin: 0px;
+        padding: 0;
+        left: 0 !important;
+        margin-left: 0 !important;
+    }
+
+main .contenedor-navegacion div:nth-child(2) > svg, main .contenedor-navegacion div:nth-child(3) > svg {
+    width: 100%;
+    max-height: 200px;
+    display: flex;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+main .contenedor-navegacion div:nth-child(1) > label, main .contenedor-navegacion div:nth-child(4) > label {
+    font-size: 1.2rem;
+    height: 146px;
+    overflow: auto;
+    color: var(--color-primario);
+    margin-left: 130px;
+    text-align: center;
+    position: absolute;
+    top: 16px;
+    z-index: 5;
+    right: 10px;
+}
+
+main .contenedor-navegacion div:nth-child(1) > img, main .contenedor-navegacion div:nth-child(4) > img {
+    opacity: .6;
+}
+
+main .contenedor-navegacion div:nth-child(1) > button, main .contenedor-navegacion div:nth-child(4) > button {
+    background: var(--color-secundario);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    width: 30%;
+    height: 30px;
+    border-radius: 15px;
+    z-index: 5;
+}
+
+    main .contenedor-navegacion div:nth-child(1) > button label, main .contenedor-navegacion div:nth-child(4) > button label {
+        margin: 0px;
+        padding: 0;
+        left: 0px !important;
+        margin-left: 0 !important;
+    }
+
+main .contenedor-navegacion div:nth-child(1) > svg, main .contenedor-navegacion div:nth-child(4) > svg {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+main .contenedor-categoria img {
+    height: 250px;
+    opacity: .7;
+    position: absolute;
+    z-index: 2;
+}
+
+main .contenedor-navegacion .contenedor-categoria .categoria::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+main .contenedor-navegacion .contenedor-categoria .categoria::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+
+main .contenedor-navegacion .contenedor-categoria .categoria::-webkit-scrollbar:vertical {
+    width: 4px;
+}
+
+main .contenedor-navegacion .contenedor-categoria .categoria::-webkit-scrollbar:horizontal {
+    height: 0px;
+}
+
+main .contenedor-navegacion .contenedor-categoria #categoria2::-webkit-scrollbar-thumb {
+    background-color: var(--color-secundario);
+    border-radius: 2px;
+    border: 2px solid var(--color-secundario);
+}
+
+main .contenedor-navegacion .contenedor-categoria #categoria1::-webkit-scrollbar-thumb {
+    background-color: var(--color-primario);
+    border-radius: 2px;
+    border: 2px solid var(--color-primario);
+}
+
+main .contenedor-navegacion .contenedor-categoria .categoria::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+main .contenedor-navegacion div:nth-child(2) button:hover, main .contenedor-navegacion div:nth-child(3) button:hover {
+    background: var(--color-fondo-formularios1);
+    color: var(--color-primario);
+    border: 2px solid var(--color-secundario);
+    transform: translateY(-3px);
+    box-shadow: 2px 2px 1px var(--color-primario);
+}
+
+main .contenedor-navegacion div:nth-child(1) button:hover, main .contenedor-navegacion div:nth-child(4) button:hover {
+    background: var(--color-fondo-formularios1);
+    color: var(--color-primario);
+    border: 2px solid var(--color-secundario);
+    transform: translateY(-3px);
+    box-shadow: 2px 2px 1px var(--color-primario);
+}
+
+main .contenedor-navegacion div:nth-child(2) > button label, main .contenedor-navegacion div:nth-child(3) > button label {
+    cursor: pointer;
+}
+
+main .contenedor-navegacion div:nth-child(1) > button label, main .contenedor-navegacion div:nth-child(4) > button label {
+    cursor: pointer
+}

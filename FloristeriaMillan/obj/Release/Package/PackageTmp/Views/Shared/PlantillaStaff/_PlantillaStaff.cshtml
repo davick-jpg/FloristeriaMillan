@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    @Styles.Render("~/Estilos/HomeStaff/Index.css")
+    @Styles.Render("~/Estilos/HomeStaff/Usuarios.css")
+    @Styles.Render("~/Estilos/HomeStaff/Proveedores.css")
+    @Styles.Render("~/Estilos/HomeStaff/Articulos.css")
+    @Styles.Render("~/Estilos/HomeStaff/Productos.css")
+    @Styles.Render("~/Estilos/HomeStaff/Ventas.css")
+    @Styles.Render("~/Estilos/HomeStaff/Pedidos.css")
+    @Styles.Render("~/Estilos/Shared/HeaderPrincipal.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+
+    <header>
+        <button type="button" class="header-logo">
+            <img class="navbar-brand" src="~/Imagenes/logo.png" alt="FloristeriaMillan.png" />
+        </button>
+        <div class="titulo-pagina">
+            <label>
+                @ViewBag.Title
+            </label>
+        </div>
+        <div class="menu-user">
+            @if (HttpContext.Current.Session["UsuarioActual"] != null)
+            {
+                <label class="usuario">
+                    Bienvenido, @HttpContext.Current.Session["UsuarioActual"]
+                </label>
+
+
+                <button class="boton-sesion" type="button" onclick="ir_a('/HomeLogin/Logout/')">
+                    <label>
+                        Cerrar Sesion
+                    </label>
+                </button>
+            }
+            else
+            {
+                System.Web.HttpContext.Current.Response.Redirect("/HomePrincipal/Index");
+            }
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/HomeStaff/Index.js")
+    @Scripts.Render("~/Scripts/HomeStaff/Usuarios.js")
+    @Scripts.Render("~/Scripts/HomeStaff/Proveedores.js")
+    @Scripts.Render("~/Scripts/HomeStaff/Articulos.js")
+    @Scripts.Render("~/Scripts/HomeStaff/Productos.js")
+    @Scripts.Render("~/Scripts/HomeStaff/Ventas.js")
+    @Scripts.Render("~/Scripts/HomeStaff/Pedidos.js")
+    @Scripts.Render("~/Scripts/Shared/HeaderPrincipal.js")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+

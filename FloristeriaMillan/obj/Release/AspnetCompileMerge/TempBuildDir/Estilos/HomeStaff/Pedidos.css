@@ -1,0 +1,332 @@
+@import url("../../Colores/Colores.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* configuracion ventas */
+
+.contenedor-pedidos {
+    width: 90%;
+    height: 95%;
+    background: var(--color-fondo-formularios1);
+    border: 2px solid var(--color-secundario);
+    border-radius: 15px;
+    box-shadow: #000 1px 1px 10px 0px;
+    position: relative;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    overflow: hidden;
+    align-items: center;
+}
+
+    .contenedor-pedidos .header {
+        width: 100%;
+        background: var(--color-fondo-formularios1);
+        border-radius: 15px 15px 0px 0px;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
+        padding-left: 10px;
+        box-shadow: var(--color-primario) -1px 2px 20px 3px;
+        align-items: center;
+    }
+
+        .contenedor-pedidos .header i {
+            font-size: 3rem;
+            color: var(--color-primario);
+            margin-left: 50px;
+            font-style: normal;
+            text-shadow: 2px 2px 1px var(--color-secundario);
+        }
+
+    .contenedor-pedidos .body {
+        display: flex;
+        justify-content: flex-start;
+        width: 95%;
+        height: 80%;
+        margin-bottom: 30px;
+        flex-direction: column;
+        row-gap: 25px;
+        align-items: center;
+    }
+
+    .contenedor-pedidos .filtros {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+        .contenedor-pedidos .filtros .combobox {
+            width: 15%;
+        }
+
+            .contenedor-pedidos .filtros .combobox select {
+                width: 100%;
+                height: 30px;
+                background: transparent;
+                border: transparent;
+                color: var(--color-primario);
+                border-bottom: 2px solid var(--color-primario);
+            }
+
+        .contenedor-pedidos .filtros .buscador {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+        }
+
+            .contenedor-pedidos .filtros .buscador input {
+                height: 30px;
+                border-radius: 5px 0px 0px 5px;
+                border: 2px solid var(--color-primario);
+                background: var(--color-secundario);
+                color: var(--color-primario);
+                padding-left: 10px;
+                width: 90%;
+            }
+
+                .contenedor-pedidos .filtros .buscador input::placeholder {
+                    color: var(--color-primario);
+                }
+
+            .contenedor-pedidos .filtros .buscador button {
+                background: var(--color-secundario);
+                border: 2px solid var(--color-primario);
+                border-left: transparent;
+                height: 30px;
+                border-radius: 0px 5px 5px 0px;
+            }
+
+                .contenedor-pedidos .filtros .buscador button span {
+                    color: var(--color-primario);
+                }
+
+    .contenedor-pedidos .contenedor-tarjetas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: var(--color-secundario);
+        border: 2px solid var(--color-secundario);
+        border-radius: 10px;
+        box-shadow: #000 1px 1px 10px 0px;
+        padding: 2%;
+        row-gap: 25px;
+        overflow: auto;
+        height: 90%;
+    }
+
+        .contenedor-pedidos .contenedor-tarjetas::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        .contenedor-pedidos .contenedor-tarjetas::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .contenedor-pedidos .contenedor-tarjetas::-webkit-scrollbar:horizontal {
+            height: 0px;
+        }
+
+        .contenedor-pedidos .contenedor-tarjetas::-webkit-scrollbar:vertical {
+            width: 3px;
+        }
+
+        .contenedor-pedidos .contenedor-tarjetas::-webkit-scrollbar-thumb {
+            background-color: var(--color-primario);
+            border-radius: 2px;
+            border: 2px solid var(--color-primario);
+        }
+
+        .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido {
+            display: flex;
+            border: 2px solid var(--color-primario);
+            border-radius: 15px;
+            padding: 10px;
+            background: var(--color-fondo-formularios1);
+            padding: 5%;
+            width: 100%;
+            column-gap: 25px;
+        }
+
+            .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .estatus {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 20%;
+                row-gap: 10px;
+            }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .estatus .nombre-cliente {
+                    font-size: 1.5rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                }
+
+            .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-botones {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 15px;
+            }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-botones button {
+                    bottom: 22px;
+                    right: 10px;
+                    width: 100px;
+                    height: 27px;
+                    border-radius: 15px;
+                    background: var(--color-secundario);
+                    border: 2px solid var(--color-primario);
+                    color: var(--color-primario);
+                    box-shadow: 1px 1px 5px var(--color-primario);
+                }
+
+                    .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-botones button:hover {
+                        background: var(--color-fondo-formularios1);
+                        transform: translateY(-2px);
+                        box-shadow: rgb(0,0,0) 5px 5px 5px 0px;
+                    }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-botones i {
+                    font-size: 1.2rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                }
+
+            .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-resumen {
+                width: 50%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 5px;
+            }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-resumen .numero-pedido {
+                    font-size: 1.5rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-resumen .resumen {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                }
+
+                    .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-resumen .resumen .titulo {
+                        font-size: 1rem;
+                        color: var(--color-primario);
+                        font-style: normal;
+                    }
+
+                    .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-resumen .resumen .texto-resumen {
+                        font-size: .8rem;
+                        color: var(--color-primario);
+                        font-style: normal;
+                        padding-left: 10px;
+                    }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-resumen .mostrador {
+                    width: 100%;
+                    font-size: 2rem;
+                    text-align: center;
+                    color: var(--color-primario);
+                    margin-top: 20px;
+                }
+
+            .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-direccion {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-direccion .titulo {
+                    font-size: 1rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-direccion .direccion-entrega {
+                    font-size: .8rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                    padding-left: 10px;
+                }
+
+            .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-fecha {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-fecha .titulo {
+                    font-size: 1rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-fecha .fecha-entrega {
+                    font-size: .8rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                    padding-left: 10px;
+                }
+
+            .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-pago {
+                width: 30%;
+            }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-pago .titulo {
+                    font-size: 2rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                    width: 100%;
+                }
+
+                .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-pago .texto {
+                    width: 90%;
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 1.1rem;
+                    color: var(--color-primario);
+                    font-style: normal;
+                    text-shadow: 3px 3px 3px black;
+                }
+
+                    .contenedor-pedidos .contenedor-tarjetas .tarjeta-pedido .contenedor-pago .texto .cantidad {
+                        font-size: 1rem;
+                        color: var(--color-primario);
+                        font-weight: bold;
+                        font-style: normal;
+                        text-shadow: none;
+                    }
+
+    .contenedor-pedidos .contenedor-control {
+    }
+
+        .contenedor-pedidos .contenedor-control .contenedor-fecha-entrega {
+        }
+
+            .contenedor-pedidos .contenedor-control .contenedor-fecha-entrega .contenedor-fecha {
+            }
+
+                .contenedor-pedidos .contenedor-control .contenedor-fecha-entrega .contenedor-fecha input {
+                }
+
+            .contenedor-pedidos .contenedor-control .contenedor-fecha-entrega .contenedor-hora {
+            }
+
+                .contenedor-pedidos .contenedor-control .contenedor-fecha-entrega .contenedor-hora .input {
+                }
+
+                .contenedor-pedidos .contenedor-control .contenedor-fecha-entrega .contenedor-hora label {
+                }
